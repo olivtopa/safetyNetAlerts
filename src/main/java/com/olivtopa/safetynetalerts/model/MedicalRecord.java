@@ -7,16 +7,16 @@ public class MedicalRecord {
 
 	private String firstName;
 	private String lastName;
-	private LocalDate birthDate;
+	private String birthdate;
 	private List<String> medications;
 	private List<String> allergies;
 
-	public MedicalRecord(String firstName, String lastName, LocalDate birthDate, List<String> medications,
+	public MedicalRecord(String firstName, String lastName, String birthdate, List<String> medications,
 			List<String> allergies) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.birthDate = birthDate;
+		this.birthdate = birthdate;
 		this.medications = medications;
 		this.allergies = allergies;
 	}
@@ -37,12 +37,12 @@ public class MedicalRecord {
 		this.lastName = lastName;
 	}
 
-	public LocalDate getBirthDate() {
-		return birthDate;
+	public String getBirthDate() {
+		return birthdate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
+	public void setBirthdate(LocalDate birthDate) {
+		this.birthdate = birthdate;
 	}
 
 	public List<String> getMedications() {

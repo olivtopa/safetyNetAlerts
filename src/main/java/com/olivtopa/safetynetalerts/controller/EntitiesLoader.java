@@ -10,13 +10,14 @@ import com.olivtopa.safetynetalerts.model.Entities;
 
 public class EntitiesLoader {
 	
-	static File file = new File("src/test/resources/data.json");
-
-	public void EntitiesLoad(String filename) throws JsonParseException, JsonMappingException, IOException {
+	
+	public Entities load(String filename) throws JsonParseException, JsonMappingException, IOException {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
-		Entities entities = objectMapper.readValue(file, Entities.class);
+		Entities entities = objectMapper.readValue(new File(filename), Entities.class);
+		
+		return entities;
 
 	}
 
