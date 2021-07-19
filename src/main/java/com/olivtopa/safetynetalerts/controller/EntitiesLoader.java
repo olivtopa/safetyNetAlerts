@@ -11,7 +11,7 @@ import com.olivtopa.safetynetalerts.model.Entities;
 public class EntitiesLoader {
 	
 	
-	public Entities load(String filename) throws JsonParseException, JsonMappingException, IOException {
+	public static Entities load(String filename) throws JsonParseException, JsonMappingException, IOException {
 
 		ObjectMapper objectMapper = new ObjectMapper();
 
