@@ -10,15 +10,17 @@ import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
 
 import com.olivtopa.safetynetalerts.model.Person;
 
+
 @Repository
 public class PersonDAO {
 
-	public List<Person> getAll() {
-		try {
-			return EntitiesLoader.load(File.FILENAME).getPersons();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
-	}
+  public List<Person> getAll() {
+    try {
+    	EntitiesLoader entitiesLoader = new EntitiesLoader();
+      return entitiesLoader.load(File.FILENAME).getPersons();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
 
 }

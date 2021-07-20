@@ -1,33 +1,30 @@
 package com.olivtopa.safetynetalerts.controllerTest;
 
-import java.io.IOException;
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import com.fasterxml.jackson.databind.JsonMappingException;
+
 import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
 import com.olivtopa.safetynetalerts.model.Entities;
 
-
 public class EntitiesLoaderTest {
 
-	private EntitiesLoader entitiesLoader = new EntitiesLoader();
+	 EntitiesLoader entitiesLoader = new EntitiesLoader();
 
 	@Test
-	private void loadFile() throws IOException, JsonMappingException, Exception {
+	public void loadFile() throws Exception {
 
-		Entities entities = entitiesLoader.load("src/main/resources/data.json");
+		Entities entities = entitiesLoader.load("data.json");
 
 		Assertions.assertNotNull(entities);
 
 	}
-	
+
 	@Test
-	private void loadFileerror() throws IOException, JsonMappingException, Exception {
+	public void loadFileerror() throws Exception {
 
-		Entities entities = entitiesLoader.load("src/main/resources/data.json");
+		entitiesLoader.load("data.json");
 
-		Assertions.assertNotNull(entities,"the input file could not be loaded");
+		Assertions.assertThrows(IllegalArgumentException.class, () -> entitiesLoader.load("dat.json")); //Invalid argument for dat.json expected
 	}
 
 }
