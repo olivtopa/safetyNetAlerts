@@ -10,18 +10,6 @@ public class Person {
 	private String phone;
 	private String email;
 
-	public Person(int id, String firstName, String lastName, String address, String city, String zip, String phone,
-			String email) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.address = address;
-		this.city = city;
-		this.zip = zip;
-		this.phone = phone;
-		this.email = email;
-	}
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -62,20 +50,20 @@ public class Person {
 		this.zip = zip;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
 	public String getPhone() {
 		return phone;
 	}
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

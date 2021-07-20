@@ -1,6 +1,5 @@
 package com.olivtopa.safetynetalerts.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class MedicalRecord {
@@ -10,16 +9,6 @@ public class MedicalRecord {
 	private String birthdate;
 	private List<String> medications;
 	private List<String> allergies;
-
-	public MedicalRecord(String firstName, String lastName, String birthdate, List<String> medications,
-			List<String> allergies) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.birthdate = birthdate;
-		this.medications = medications;
-		this.allergies = allergies;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -37,11 +26,11 @@ public class MedicalRecord {
 		this.lastName = lastName;
 	}
 
-	public String getBirthDate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(LocalDate birthDate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 

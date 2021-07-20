@@ -1,15 +1,24 @@
 package com.olivtopa.safetynetalerts.dao;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.olivtopa.safetynetalerts.constant.File;
 import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
-import com.olivtopa.safetynetalerts.model.Entities;
+
 import com.olivtopa.safetynetalerts.model.Person;
 
+@Repository
 public class PersonDAO {
 
-	Entities entities = EntitiesLoader.load(File.FILENAME);
-	List<Person> persons = entities.getPersons();
+	public List<Person> getAll() {
+		try {
+			return EntitiesLoader.load(File.FILENAME).getPersons();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }
