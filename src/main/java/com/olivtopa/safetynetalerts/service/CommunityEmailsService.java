@@ -14,11 +14,9 @@ public class CommunityEmailsService {
 	@Autowired
 	private PersonService personService;
 
-	
-	List<Person> persons = personService.getAll();
-
 	public List<String> getEmails(String city) {
-		List<String> emails = persons.stream().filter(c -> c.getCity()==city).map(Person::getEmail).collect(Collectors.toList());
+		List<String> emails = personService.getAll().stream().filter(c -> c.getCity().equals(city))
+				.map(Person::getEmail).collect(Collectors.toList());
 		return emails;
 	}
 }
