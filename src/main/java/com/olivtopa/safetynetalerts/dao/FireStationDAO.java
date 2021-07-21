@@ -7,18 +7,16 @@ import org.springframework.stereotype.Repository;
 
 import com.olivtopa.safetynetalerts.constant.File;
 import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
-
-import com.olivtopa.safetynetalerts.model.Person;
+import com.olivtopa.safetynetalerts.model.FiresStation;
 
 @Repository
-public class PersonDAO {
-
+public class FireStationDAO {
 	
+	EntitiesLoader entitiesLoader;
 
-	public List<Person> getAll() {
+	public List<FiresStation> getAll() {
 		try {
-			EntitiesLoader entitiesLoader = new EntitiesLoader();
-			return entitiesLoader.load(File.FILENAME).getPersons();
+			return entitiesLoader.load(File.FILENAME).getFirestations();
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
