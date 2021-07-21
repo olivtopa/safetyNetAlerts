@@ -14,7 +14,7 @@ public class CommunityEmailsService {
 	@Autowired
 	private PersonService personService;
 
-	private String email;
+	
 	List<Person> persons = personService.getAll();
 
 	public List<String> getEmails(String city) {
