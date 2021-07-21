@@ -18,7 +18,7 @@ public class CommunityEmailsService {
 	List<Person> persons = personService.getAll();
 
 	public List<String> getEmails(String city) {
-		List<String> emails = persons.stream().filter(c -> c.getCity()==email).map(Person::getEmail).collect(Collectors.toList());
+		List<String> emails = persons.stream().filter(c -> c.getCity()==city).map(Person::getEmail).collect(Collectors.toList());
 		return emails;
 	}
 }
