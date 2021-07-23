@@ -1,4 +1,4 @@
-package com.olivtopa.safetynetalerts.controllerTest;
+package com.olivtopa.safetynetalerts.controller;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

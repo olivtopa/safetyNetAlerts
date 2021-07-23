@@ -15,60 +15,61 @@ import com.olivtopa.safetynetalerts.model.Person;
 @ExtendWith(MockitoExtension.class)
 class CommunityEmailsServiceTest {
 
-  @InjectMocks
-  private CommunityEmailsService communityEmailsService;
+	@InjectMocks
+	private CommunityEmailsService communityEmailsService;
 
-  @Mock
-  private PersonService personService;
+	@Mock
+	private PersonService personService;
 
-  @Test
-  public void unknownCityReturnNoEmail() {
+	@Test
+	public void unknownCityReturnNoEmail() {
 
-    // Given
-    Person person = new Person();
-    person.setEmail("email1");
-    person.setCity("city1");
-    Mockito.when(personService.getAll()).thenReturn(List.of(person));
+		// Given
+		Person person = new Person();
+		person.setEmail("email1");
+		person.setCity("city1");
+		Mockito.when(personService.getAll()).thenReturn(List.of(person));
 
-    // When
-    List<String> filteredEmails = communityEmailsService.getEmails("unknown");
+		// When
+		List<String> filteredEmails = communityEmailsService.getEmails("unknown");
 
-    // Then
-    Assertions.assertThat(filteredEmails).isEmpty();
-  }
+		// Then
+		Assertions.assertThat(filteredEmails).isEmpty();
+	}
 
-  @Test
-  public void knownCityReturnsEmail() {
-    // Given
-    Person matchingPerson = new Person();
-    matchingPerson.setEmail("email1");
-    matchingPerson.setCity("city1");
+	@Test
+	public void knownCityReturnsEmail() {
+		// Given
+		Person matchingPerson = new Person();
+		matchingPerson.setEmail("email1");
+		matchingPerson.setCity("city1");
 
-    Person filteredOutPerson = new Person();
-    filteredOutPerson.setEmail("email2");
-    filteredOutPerson.setCity("city2");
-    // TODO compléter filteredOutPerson: email & city différents de la première personne
-    
-    Mockito.when(personService.getAll()).thenReturn(List.of(matchingPerson, filteredOutPerson));
+		Person filteredOutPerson = new Person();
+		filteredOutPerson.setEmail("email2");
+		filteredOutPerson.setCity("city2");
+		// TODO compléter filteredOutPerson: email & city différents de la première
+		// personne
 
-    // When
-    List<String> filteredEmails = communityEmailsService.getEmails("city");
+		Mockito.when(personService.getAll()).thenReturn(List.of(matchingPerson, filteredOutPerson));
 
-    // Then
-    Assertions.assertThat(filteredEmails).containsExactly(matchingPerson.getEmail());
-  }
+		// When
+		List<String> filteredEmails = communityEmailsService.getEmails("city");
 
-  @Test
-  public void noPersons() {
-    // Given
-    Mockito.when(personService.getAll()).thenReturn(List.of());
+		// Then
+		Assertions.assertThat(filteredEmails).containsExactly(matchingPerson.getEmail());
+	}
 
-    // When
-    List<String> filteredEmails = communityEmailsService.getEmails("city");
+	@Test
+	public void noPersons() {
+		// Given
+		Mockito.when(personService.getAll()).thenReturn(List.of());
 
-    // Then
-    // TODO compléter
-//    Assertions.assertThat(filteredEmails).;
-  }
+		// When
+		List<String> filteredEmails = communityEmailsService.getEmails("city");
+
+		// Then
+		// TODO compléter
+		Assertions.assertThat(filteredEmails).isEmpty();
+	}
 
 }

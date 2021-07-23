@@ -1,4 +1,4 @@
-package com.olivtopa.safetynetalerts.controllerTest;
+package com.olivtopa.safetynetalerts.controller;
 
 public class PersonControllerIT {
 
