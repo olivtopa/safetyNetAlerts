@@ -53,7 +53,7 @@ class CommunityEmailsServiceTest {
 		Mockito.when(personService.getAll()).thenReturn(List.of(matchingPerson, filteredOutPerson));
 
 		// When
-		List<String> filteredEmails = communityEmailsService.getEmails("city");
+		List<String> filteredEmails = communityEmailsService.getEmails("city1");
 
 		// Then
 		Assertions.assertThat(filteredEmails).containsExactly(matchingPerson.getEmail());
@@ -65,7 +65,7 @@ class CommunityEmailsServiceTest {
 		Mockito.when(personService.getAll()).thenReturn(List.of());
 
 		// When
-		List<String> filteredEmails = communityEmailsService.getEmails("city");
+		List<String> filteredEmails = communityEmailsService.getEmails("city1");
 
 		// Then
 		// TODO compléter
