@@ -7,7 +7,7 @@ import com.olivtopa.safetynetalerts.model.Entities;
 
 public class EntitiesLoaderTest {
 
-	 EntitiesLoader entitiesLoader = new EntitiesLoader();
+	EntitiesLoader entitiesLoader = new EntitiesLoader();
 
 	@Test
 	public void loadFile() throws Exception {
@@ -23,7 +23,10 @@ public class EntitiesLoaderTest {
 
 		entitiesLoader.load("data.json");
 
-		Assertions.assertThrows(IllegalArgumentException.class, () -> entitiesLoader.load("dat.json")); //Invalid argument for dat.json expected
+		Assertions.assertThrows(IllegalArgumentException.class, () -> entitiesLoader.load("dat.json")); // Invalid
+																										// argument for
+																										// dat.json
+																										// expected
 	}
 
 }
