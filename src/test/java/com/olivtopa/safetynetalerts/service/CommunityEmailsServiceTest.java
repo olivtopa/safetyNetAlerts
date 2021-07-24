@@ -47,9 +47,7 @@ class CommunityEmailsServiceTest {
 		Person filteredOutPerson = new Person();
 		filteredOutPerson.setEmail("email2");
 		filteredOutPerson.setCity("city2");
-		// TODO compléter filteredOutPerson: email & city différents de la première
-		// personne
-
+		
 		Mockito.when(personService.getAll()).thenReturn(List.of(matchingPerson, filteredOutPerson));
 
 		// When
@@ -68,7 +66,6 @@ class CommunityEmailsServiceTest {
 		List<String> filteredEmails = communityEmailsService.getEmails("city1");
 
 		// Then
-		// TODO compléter
 		Assertions.assertThat(filteredEmails).isEmpty();
 	}
 

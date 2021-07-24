@@ -7,16 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.olivtopa.safetynetalerts.model.FiresStation;
+import com.olivtopa.safetynetalerts.service.PhoneAlertService;
 
 @RestController
 public class PhoneAlertController {
 
 	@Autowired
-	PhoneAlertController phoneAlertService;
+	PhoneAlertService phoneAlertService;
 
 	@RequestMapping(value = "/phoneAlert", method = RequestMethod.GET)
-	public List<FiresStation> getAll() {
-		return phoneAlertService.getAll();
+	public List<String> getFindPhoneNumberByFireStationNumber(int fireStationNumber) {
+		return phoneAlertService.findPhoneNumberByFireStationNumber(fireStationNumber);
 	}
 }
