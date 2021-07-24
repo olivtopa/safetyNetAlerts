@@ -47,7 +47,7 @@ class CommunityEmailsServiceTest {
 		Person filteredOutPerson = new Person();
 		filteredOutPerson.setEmail("email2");
 		filteredOutPerson.setCity("city2");
-		
+
 		Mockito.when(personService.getAll()).thenReturn(List.of(matchingPerson, filteredOutPerson));
 
 		// When
