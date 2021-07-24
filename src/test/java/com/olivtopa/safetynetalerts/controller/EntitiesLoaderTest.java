@@ -3,7 +3,6 @@ package com.olivtopa.safetynetalerts.controller;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
 import com.olivtopa.safetynetalerts.model.Entities;
 
 public class EntitiesLoaderTest {
