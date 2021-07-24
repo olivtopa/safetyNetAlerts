@@ -2,14 +2,14 @@ package com.olivtopa.safetynetalerts.controller;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.olivtopa.safetynetalerts.model.Entities;
 
+@Service
 public class EntitiesLoader {
-	@Autowired
-	EntitiesLoader entitiesLoader;
+	
 
 	public Entities load(String filename) throws IOException {
 

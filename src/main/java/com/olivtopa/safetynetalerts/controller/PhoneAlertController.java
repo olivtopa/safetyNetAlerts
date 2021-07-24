@@ -16,7 +16,11 @@ public class PhoneAlertController {
 	PhoneAlertService phoneAlertService;
 
 	@RequestMapping(value = "/phoneAlert", method = RequestMethod.GET)
-	public List<String> getFindPhoneNumberByFireStationNumber(int fireStationNumber) {
-		return phoneAlertService.findPhoneNumberByFireStationNumber(fireStationNumber);
+	public List<String> getFindPhoneNumberByFireStationNumber(Integer firestation) {
+		if(firestation == 0) {
+			throw new IllegalArgumentException("firestation cannot be null");
+		}
+		return phoneAlertService.findPhoneNumberByFireStationNumber(firestation);
+		
 	}
 }
