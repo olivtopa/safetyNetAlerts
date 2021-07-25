@@ -16,15 +16,14 @@ public class PhoneAlertService {
 	@Autowired
 	private FireStationDAO fireStationDAO;
 
-	FiresStation firesStation;
-
 	@Autowired
 	private PersonDAO personDAO;
 
 	public List<String> findPhoneNumberByFireStationNumber(int fireStationNumber) {
 
-		List<String> fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation()==(fireStationNumber))
-				.map(FiresStation::getAddress).collect(Collectors.toList());
+		List<String> fireStationAddresses = fireStationDAO.getAll().stream()
+				.filter(s -> s.getStation() == (fireStationNumber)).map(FiresStation::getAddress)
+				.collect(Collectors.toList());
 
 		List<String> phoneNumberByAddress = personDAO.getAll().stream()
 				.filter(person -> fireStationAddresses.contains(person.getAddress())).map(Person::getPhone)
