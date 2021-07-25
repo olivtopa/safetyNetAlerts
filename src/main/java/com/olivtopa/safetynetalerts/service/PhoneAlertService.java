@@ -16,7 +16,6 @@ public class PhoneAlertService {
 	@Autowired
 	private FireStationDAO fireStationDAO;
 
-	@Autowired
 	FiresStation firesStation;
 
 	@Autowired
@@ -24,11 +23,11 @@ public class PhoneAlertService {
 
 	public List<String> findPhoneNumberByFireStationNumber(int fireStationNumber) {
 
-		fireStationDAO.getAll().stream().filter(s -> s.getStation() == (fireStationNumber))
+		List<String> fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation()==(fireStationNumber))
 				.map(FiresStation::getAddress).collect(Collectors.toList());
 
 		List<String> phoneNumberByAddress = personDAO.getAll().stream()
-				.filter(c -> c.getAddress().contains(firesStation.getAddress())).map(Person::getPhone)
+				.filter(person -> fireStationAddresses.contains(person.getAddress())).map(Person::getPhone)
 				.collect(Collectors.toList());
 		return phoneNumberByAddress;
 
