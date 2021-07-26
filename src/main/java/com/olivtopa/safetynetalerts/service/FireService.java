@@ -25,8 +25,10 @@ public class FireService {
 	private PersonDAO personDAO;
 	
 	public List<Fire> findByAddress(String address) {
+		List<String> personPhone = personDAO.getAll().stream().filter(person -> person.getAddress().equals(address))
+				.map(Person::getPhone).collect(Collectors.toList());
 		List<String> personLastName = personDAO.getAll().stream().filter(person -> person.getAddress().equals(address))
-				.map(Person::getLastName, Person::getPhone).collect(Collectors.toList());
+				.map(Person::getLastName).collect(Collectors.toList());
 		List<Integer> station = fireStationDAO.getAll().stream().filter(firesStation -> firesStation.getAddress().equals(address))
 				.map(FiresStation::getStation).collect(Collectors.toList());
 		List<List> medical = medicalRecordDAO.getAll().stream().filter(medic -> medic.getLastName().equals(address))
