@@ -29,7 +29,7 @@ public class FireService {
 				.map(Person::getLastName, Person::getPhone).collect(Collectors.toList());
 		List<Integer> station = fireStationDAO.getAll().stream().filter(firesStation -> firesStation.getAddress().equals(address))
 				.map(FiresStation::getStation).collect(Collectors.toList());
-		List<List> medical = medicalRecordDAO.getAll().stream().filter(medic -> medic.getLastName().equals(personLastName))
+		List<List> medical = medicalRecordDAO.getAll().stream().filter(medic -> medic.getLastName().equals(address))
 				.map(MedicalRecord::getAllergies).collect(Collectors.toList());
 		
 		return null;
