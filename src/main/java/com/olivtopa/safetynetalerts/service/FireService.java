@@ -24,45 +24,52 @@ public class FireService {
 	private FireStationDAO fireStationDAO;
 	@Autowired
 	private PersonDAO personDAO;
-	
-	@Autowired Person person;
+	@Autowired
+	Person person;
+	@Autowired
+	FiresStation firesStation; 
 
-	private String personLastName;
-	private String personPhone;
-	private int station;
-	private List<String> allergies;
-
-	private Fire buildFire(Person person, FiresStation firesStation, MedicalRecord medicalRecord) {
-
+		private Fire buildFire(Person person, FiresStation firesStation, MedicalRecord medicalRecord) {
+				
 		Fire fire = new Fire();
+		
+		final String firstName ;
+		final String lastName;
+		final int station;
+		final List<String> medications;
+		final List<String> allergies;
 
-		person.setLastName(personLastName);
-		person.setPhone(personPhone);
-		firesStation.setStation(station);
-		medicalRecord.setAllergies(allergies);
+		fire.setFirstName(person.getFirstName());
+		fire.setLastName(person.getLastName());
+		fire.setStation(firesStation.getStation());
+		fire.setMedications(medicalRecord.getMedications());
+		fire.setAllergies(medicalRecord.getAllergies());
 
 		return fire;
 
 	}
 
-public List<Fire> inhabitantByAddress(String address) {
-	
-	List<Fire> findinhabitans = personDAO.getAll().stream().filter(a->a.getAddress()==(address)).
-			map(person->buildFire(person,findFireStation(address),findMedicalRecord())).collect(Collectors.toList());
-	
-	return findinhabitans;
-	
-	
-}
+	public void inhabitantByAddress(String address) {
 
-private FiresStation findFireStation(String address) {
-	// TODO Auto-generated method stub
-	return null;
-}
+		personDAO.getAll().stream().filter(a -> a.getAddress() == (address))
+				.map(person -> buildFire(person, findFireStation(address), findMedicalRecord()))
+				.collect(Collectors.toList());
 
-private MedicalRecord findMedicalRecord() {
-	// TODO Auto-generated method stub
-	return null;
-}
+		
+
+	}
+
+	private FiresStation findFireStation(String address) {
+
+		FiresStation stations = fireStationDAO.getAll().stream()
+				.filter(fireStation -> fireStation.getAddress().equals(address)).collect(null);
+		return stations;
+	}
+
+	private MedicalRecord findMedicalRecord() {
+		MedicalRecord medical = medicalRecordDAO.getAll().stream().filter(person -> person.getFirstName().equals(FirstName) && person.getLastName().equals(LastName))
+				.map(MedicalRecord::getAllergies).collect(Collectors.toList());
+		return null;
+	}
 
 }
