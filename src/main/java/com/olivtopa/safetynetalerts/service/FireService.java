@@ -24,6 +24,8 @@ public class FireService {
 	private FireStationDAO fireStationDAO;
 	@Autowired
 	private PersonDAO personDAO;
+	
+	@Autowired Person person;
 
 	private String personLastName;
 	private String personPhone;
@@ -43,9 +45,24 @@ public class FireService {
 
 	}
 
-	private FiresStation findFiresStation(String address) {
-		
-		FiresStation findFireStation = fireStationDAO.getAll().stream().filter(a->a.getAddress().equals(address)).map(FiresStation::getStation);
-		return findFireStation;
-	}
+public List<Fire> inhabitantByAddress(String address) {
+	
+	List<Fire> findinhabitans = personDAO.getAll().stream().filter(a->a.getAddress()==(address)).
+			map(person->buildFire(person,findFireStation(address),findMedicalRecord())).collect(Collectors.toList());
+	
+	return findinhabitans;
+	
+	
+}
+
+private FiresStation findFireStation(String address) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+private MedicalRecord findMedicalRecord() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 }
