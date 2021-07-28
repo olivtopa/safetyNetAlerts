@@ -2,7 +2,6 @@ package com.olivtopa.safetynetalerts.service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,16 +23,16 @@ public class FireService {
 	private FireStationDAO fireStationDAO;
 	@Autowired
 	private PersonDAO personDAO;
-	@Autowired
-	Person person;
-	@Autowired
-	FiresStation firesStation; 
+	
+	private Person person;
+	
+	FiresStation firesStation;
 
-		private Fire buildFire(Person person, FiresStation firesStation, MedicalRecord medicalRecord) {
-				
+	private Fire buildFire(Person person, FiresStation firesStation, MedicalRecord medicalRecord) {
+
 		Fire fire = new Fire();
-		
-		final String firstName ;
+
+		final String firstName;
 		final String lastName;
 		final int station;
 		final List<String> medications;
@@ -49,27 +48,28 @@ public class FireService {
 
 	}
 
-	public void inhabitantByAddress(String address) {
-
-		personDAO.getAll().stream().filter(a -> a.getAddress() == (address))
-				.map(person -> buildFire(person, findFireStation(address), findMedicalRecord()))
-				.collect(Collectors.toList());
+	public List<Fire> inhabitantByAddress(String address) {
 
 		
+		List<Fire> fire = personDAO.getAll().stream().filter(a -> a.getAddress() == (address)).map(person -> buildFire(person,
+						findFireStation(address), findMedicalRecord(person.getFirstName(), person.getLastName())))
+				.collect(Collectors.toList());
+		return fire;
 
 	}
 
 	private FiresStation findFireStation(String address) {
 
 		FiresStation stations = fireStationDAO.getAll().stream()
-				.filter(fireStation -> fireStation.getAddress().equals(address)).collect(null);
+				.filter(fireStation -> fireStation.getAddress().equals(address)).findAny().orElse(null);
 		return stations;
 	}
 
-	private MedicalRecord findMedicalRecord() {
-		MedicalRecord medical = medicalRecordDAO.getAll().stream().filter(person -> person.getFirstName().equals(FirstName) && person.getLastName().equals(LastName))
-				.map(MedicalRecord::getAllergies).collect(Collectors.toList());
-		return null;
+	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
+		MedicalRecord medical = medicalRecordDAO.getAll().stream()
+				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
+				.findAny().orElse(null);
+		return medical;
 	}
 
 }

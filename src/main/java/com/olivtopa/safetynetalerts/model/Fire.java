@@ -15,7 +15,7 @@ public class Fire {
 	private LocalDate age;
 
 	private String firstName;
-	private Object lastName;
+	private String lastName;
 	private int station;
 	private List<String> medications;
 	private List<String> allergies;
