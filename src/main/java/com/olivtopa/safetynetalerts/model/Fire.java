@@ -25,6 +25,42 @@ public class Fire {
 
 	}
 
+	public FiresStation getFiresStation() {
+		return firesStation;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public MedicalRecord getMedicalRecord() {
+		return medicalRecord;
+	}
+
+	public LocalDate getAge() {
+		return age;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public int getStation() {
+		return station;
+	}
+
+	public List<String> getMedications() {
+		return medications;
+	}
+
+	public List<String> getAllergies() {
+		return allergies;
+	}
+
 	public void setLastName(String LastName) {
 		this.lastName = lastName;
 

@@ -51,7 +51,7 @@ public class FireService {
 	public List<Fire> inhabitantByAddress(String address) {
 
 		
-		List<Fire> fire = personDAO.getAll().stream().filter(a -> a.getAddress() == (address)).map(person -> buildFire(person,
+		List<Fire> fire = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(person -> buildFire(person,
 						findFireStation(address), findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
 		return fire;
@@ -61,13 +61,13 @@ public class FireService {
 	private FiresStation findFireStation(String address) {
 
 		FiresStation stations = fireStationDAO.getAll().stream()
-				.filter(fireStation -> fireStation.getAddress().equals(address)).findAny().orElse(null);
+				.filter(fireStation -> fireStation.getAddress().equals(address)).distinct().findAny().orElse(null);
 		return stations;
 	}
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
-				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
+				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName)).distinct()
 				.findAny().orElse(null);
 		return medical;
 	}
