@@ -1,5 +1,7 @@
 package com.olivtopa.safetynetalerts.service;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,20 +25,18 @@ public class FireService {
 	private FireStationDAO fireStationDAO;
 	@Autowired
 	private PersonDAO personDAO;
-	
-	private Person person;
-	
+
 	FiresStation firesStation;
 
 	private Fire buildFire(Person person, FiresStation firesStation, MedicalRecord medicalRecord) {
 
 		Fire fire = new Fire();
 
-		final String firstName;
-		final String lastName;
-		final int station;
-		final List<String> medications;
-		final List<String> allergies;
+		// final String firstName;
+		// final String lastName;
+		// final int station;
+		// final List<String> medications;
+		// final List<String> allergies;
 
 		fire.setFirstName(person.getFirstName());
 		fire.setLastName(person.getLastName());
@@ -44,14 +44,22 @@ public class FireService {
 		fire.setMedications(medicalRecord.getMedications());
 		fire.setAllergies(medicalRecord.getAllergies());
 
+		int age;
+		LocalDate birthdate = medicalRecord.getBirthdate();
+		LocalDate currentdate = LocalDate.now();
+
+		age = calculateAge(birthdate, currentdate);
+
+		fire.setAge(age);
+
 		return fire;
 
 	}
 
 	public List<Fire> inhabitantByAddress(String address) {
 
-		
-		List<Fire> fire = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(person -> buildFire(person,
+		List<Fire> fire = personDAO
+				.getAll().stream().filter(a -> a.getAddress().equals(address)).map(person -> buildFire(person,
 						findFireStation(address), findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
 		return fire;
@@ -67,9 +75,13 @@ public class FireService {
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
-				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName)).distinct()
-				.findAny().orElse(null);
+				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
+				.distinct().findAny().orElse(null);
 		return medical;
+	}
+
+	public int calculateAge(LocalDate birthdate, LocalDate currentDate) {
+		return Period.between(birthdate, currentDate).getYears();
 	}
 
 }

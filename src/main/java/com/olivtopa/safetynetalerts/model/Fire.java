@@ -1,13 +1,10 @@
 package com.olivtopa.safetynetalerts.model;
 
-import java.time.LocalDate;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Fire {
-	
 
 	@JsonIgnore
 	private FiresStation firesStation;
@@ -16,14 +13,12 @@ public class Fire {
 	@JsonIgnore
 	private MedicalRecord medicalRecord;
 
-	@JsonFormat(pattern = "MM/dd/yyyy")
-	private LocalDate age;
-
 	private String firstName;
 	private String lastName;
 	private int station;
 	private List<String> medications;
 	private List<String> allergies;
+	private int age;
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -40,10 +35,6 @@ public class Fire {
 
 	public MedicalRecord getMedicalRecord() {
 		return medicalRecord;
-	}
-
-	public LocalDate getAge() {
-		return age;
 	}
 
 	public String getFirstName() {
@@ -73,18 +64,26 @@ public class Fire {
 
 	public void setStation(int station) {
 		this.station = station;
-		
+
 	}
 
 	public void setMedications(List<String> medications) {
 		this.medications = medications;
-		
+
 	}
 
 	public void setAllergies(List<String> allergies) {
 		this.allergies = allergies;
-		
+
 	}
 
-	
+	public void setAge(int age) {
+		this.age = age;
+
+	}
+
+	public int getAge() {
+		return age;
+	}
+
 }

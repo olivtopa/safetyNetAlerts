@@ -1,12 +1,16 @@
 package com.olivtopa.safetynetalerts.model;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class MedicalRecord {
 
 	private String firstName;
 	private String lastName;
-	private String birthdate;
+	@JsonFormat(pattern = "MM/dd/yyyy")
+	private LocalDate birthdate;
 	private List<String> medications;
 	private List<String> allergies;
 
@@ -26,11 +30,11 @@ public class MedicalRecord {
 		this.lastName = lastName;
 	}
 
-	public String getBirthdate() {
+	public LocalDate getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(String birthdate) {
+	public void setBirthdate(LocalDate birthdate) {
 		this.birthdate = birthdate;
 	}
 
