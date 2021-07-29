@@ -4,11 +4,16 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Fire {
+	
 
+	@JsonIgnore
 	private FiresStation firesStation;
+	@JsonIgnore
 	private Person person;
+	@JsonIgnore
 	private MedicalRecord medicalRecord;
 
 	@JsonFormat(pattern = "MM/dd/yyyy")
