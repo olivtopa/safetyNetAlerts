@@ -61,7 +61,7 @@ public class Fire {
 		return allergies;
 	}
 
-	public void setLastName(String LastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 
 	}
