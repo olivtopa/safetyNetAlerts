@@ -32,17 +32,12 @@ public class FireService {
 
 		Fire fire = new Fire();
 
-		// final String firstName;
-		// final String lastName;
-		// final int station;
-		// final List<String> medications;
-		// final List<String> allergies;
-
 		fire.setFirstName(person.getFirstName());
 		fire.setLastName(person.getLastName());
 		fire.setStation(firesStation.getStation());
 		fire.setMedications(medicalRecord.getMedications());
 		fire.setAllergies(medicalRecord.getAllergies());
+		fire.setPhone(person.getPhone());
 
 		int age;
 		LocalDate birthdate = medicalRecord.getBirthdate();

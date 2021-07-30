@@ -19,6 +19,11 @@ public class Fire {
 	private List<String> medications;
 	private List<String> allergies;
 	private int age;
+	private String Phone;
+
+	public String getPhone() {
+		return Phone;
+	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -84,6 +89,11 @@ public class Fire {
 
 	public int getAge() {
 		return age;
+	}
+
+	public void setPhone(String phone) {
+		this.Phone= phone;
+		
 	}
 
 }
