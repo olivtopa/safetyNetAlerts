@@ -29,7 +29,7 @@ public class FireServiceTest {
 	@Mock FireStationDAO fireStationDAO;
 	@Mock MedicalRecordDAO medicalRecordDAO;
 	
-/*	@Test
+	@Test
 	public void KnownAdressReturnUnhabitant() {
 		
 		//GIVEN
@@ -47,8 +47,8 @@ public class FireServiceTest {
 		matchingMedicalRecord.setFirstName("Oliv");
 		matchingMedicalRecord.setLastName("DUPONT");
 		
-		//@JsonFormat(pattern = "MM/dd/yyyy")
-		//matchingMedicalRecord.setBirthdate(03/06/2000);
+		@JsonFormat(pattern = "MM/dd/yyyy")
+		matchingMedicalRecord.setBirthdate(03/06/2000);
 		//matchingMedicalRecord.setMedications(["aznol:350mg", "hydrapermazol:100mg"]);
 		//matchingMedicalRecord.setAllergies(["peanut", "shellfish", "aznol"]);
 		
@@ -65,7 +65,7 @@ public class FireServiceTest {
 		MedicalRecord nomatchingMedicalRecord = new MedicalRecord();
 		nomatchingMedicalRecord.setFirstName("Oliver");
 		nomatchingMedicalRecord.setLastName("DUPONTIS");
-		//nomatchingMedicalRecord.setBirthdate(03/05/1990);
+		nomatchingMedicalRecord.setBirthdate(03/05/1990);
 		//nomatchingMedicalRecord.setMedications([]);
 		//nomatchingMedicalRecord.setAllergies(["peanut"]);
 		
@@ -79,7 +79,7 @@ public class FireServiceTest {
 		//THEN
 		Assertions.assertThat(firstNameFinded).containsExactly(matchingPerson.getFirstName());
 		
-	}*/
+	}
 	
 	@Test
 	public void unKnownAdress() {
