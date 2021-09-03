@@ -44,9 +44,9 @@ public class ChildAlertService {
 
 	}
 
-	private List<MedicalRecord> composedFoyer(String address) {
-		List<MedicalRecord> childAlert = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address))
-				.map(c -> childresearch()).collect(Collectors.toList());
+	private List<ChildAlert> composedFoyer(String address) {
+		List<ChildAlert> childAlert = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address))
+				.map(person -> buildChildAlert(person,childresearch())).collect(Collectors.toList());
 
 		return childAlert;
 	}
