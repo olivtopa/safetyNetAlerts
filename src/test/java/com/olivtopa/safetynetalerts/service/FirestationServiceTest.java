@@ -21,6 +21,7 @@ class FirestationServiceTest {
 		
 		Assertions.assertNotNull(resultat);
 		Assertions.assertEquals(0, resultat.getNbAdults());
+		Assertions.assertEquals(0,resultat.getNbChildren());
 	}
 
 }
