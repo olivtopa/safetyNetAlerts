@@ -17,27 +17,33 @@ import com.olivtopa.safetynetalerts.model.PersonsInFireStation;
 
 @ExtendWith(MockitoExtension.class)
 class FirestationServiceTest {
-	
+
 	@InjectMocks
 	private FirestationService firestationService;
-	
+
 	@Mock
 	private PersonDAO personDAO;
-	
+
 	@Test
 	void findPersonInFireStationScope() {
-		
-		//GIVEN
-		when(personDAO.getAll()).thenReturn(List.of(new Person()));
-		
-		// When
-	    PersonsInFireStation resultat = firestationService.findPersonsInFireStationScope(1L);
 
-	    // Then
-	    Assertions.assertNotNull(resultat);
-	    Assertions.assertEquals(0, resultat.getNbAdults());
-	    Assertions.assertEquals(0, resultat.getNbChildren());
-	    Assertions.assertEquals(1, resultat.getPersons().size());
+		// GIVEN
+		Person person1 = new Person();
+		person1.setFirstName("Léo"); // Cette valeur doit se retrouver dans le résultat
+		person1.setLastName("Durand"); // Celle-ci également
+		person1.setAddress("1509 Culver St");
+		when(personDAO.getAll()).thenReturn(List.of(person1));
+
+		// When
+		PersonsInFireStation resultat = firestationService.findPersonsInFireStationScope(1L);
+
+		// Then
+		Assertions.assertNotNull(resultat);
+		Assertions.assertEquals(0, resultat.getNbAdults());
+		Assertions.assertEquals(0, resultat.getNbChildren());
+		Assertions.assertEquals(1, resultat.getPersons().size());
+		Assertions.assertEquals("Léo", resultat.getPersons().get(0).getFirstName());
+		Assertions.assertEquals("Durand", resultat.getPersons().get(0).getLastName());
 	}
-	
+
 }

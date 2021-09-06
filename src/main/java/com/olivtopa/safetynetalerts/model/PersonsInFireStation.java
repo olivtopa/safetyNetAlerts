@@ -6,13 +6,13 @@ public class PersonsInFireStation {
 	
 	private int nbAdults;
 	private int nbChildren;
-	private List<Object> persons;
+	private List<PersonInFireStation> persons;
 	
-	public List<Object> getPersons() {
+	public List<PersonInFireStation> getPersons() {
 		return persons;
 	}
 
-	public void setPersons(List<Object> persons) {
+	public void setPersons(List<PersonInFireStation> persons) {
 		this.persons = persons;
 	}
 
