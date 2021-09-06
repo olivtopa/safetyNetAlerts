@@ -1,11 +1,22 @@
 package com.olivtopa.safetynetalerts.model;
 
+import java.time.LocalDate;
+
 public class PersonInFireStation {
 	
 	private String firstName;
     private String lastName;
+    private LocalDate birthDate;
 
-    public String getFirstName() {
+    public LocalDate getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getFirstName() {
         return firstName;
     }
 
