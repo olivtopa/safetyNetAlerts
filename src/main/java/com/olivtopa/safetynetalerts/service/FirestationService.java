@@ -22,15 +22,19 @@ public class FirestationService {
 	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 		
 		List<Person> allPersons = personDAO.getAll();
+		
+		return buildResult(allPersons);
+	}
 
-	    PersonsInFireStation personsInFireStation = new PersonsInFireStation();
+	private PersonsInFireStation buildResult(List<Person> allPersons) {
+		PersonsInFireStation personsInFireStation = new PersonsInFireStation();
 
-	    List<PersonInFireStation> persons = new ArrayList<>();
-        allPersons.forEach(onePerson -> {
-            PersonInFireStation personInFireStation = new PersonInFireStation();
-            personInFireStation.setFirstName(onePerson.getFirstName());
-            personInFireStation.setLastName(onePerson.getLastName());
-            persons.add(personInFireStation);
+		 List<PersonInFireStation> persons = new ArrayList<>();
+		    allPersons.forEach(onePerson -> {
+		        PersonInFireStation personInFireStation = new PersonInFireStation();
+		        personInFireStation.setFirstName(onePerson.getFirstName());
+		        personInFireStation.setLastName(onePerson.getLastName());
+		        persons.add(personInFireStation);
         });
 
         personsInFireStation.setPersons(persons);
