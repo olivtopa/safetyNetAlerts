@@ -7,7 +7,7 @@ import com.olivtopa.safetynetalerts.model.PersonsInFireStation;
 @Service
 public class FirestationService {
 	
-	public Object findPersonsInFireStationScope(long stationNumber) {
+	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 		return new PersonsInFireStation();
 	}
 
