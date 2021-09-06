@@ -37,6 +37,11 @@ class FirestationServiceTest {
 		person1.setFirstName("Léo"); 
 		person1.setLastName("Durand");
 		person1.setAddress("1509 Culver St");
+		
+		Person person2 = new Person();
+	    person2.setFirstName("Christelle");
+	    person2.setLastName("Durand");
+	    person2.setAddress("1509 Culver St");
 
 		Person outOfFireStationPerson = new Person();
 		outOfFireStationPerson.setFirstName("Thibaut");
@@ -48,18 +53,22 @@ class FirestationServiceTest {
 	    fireStation.setAddress("1509 Culver St");
 	    when(fireStationDAO.getAll()).thenReturn(List.of(fireStation));
 
-		when(personDAO.getAll()).thenReturn(List.of(person1, outOfFireStationPerson));
+	    when(personDAO.getAll()).thenReturn(List.of(person1, person2, outOfFireStationPerson));
 
 		// When
 		PersonsInFireStation resultat = firestationService.findPersonsInFireStationScope(1L);
+
 
 		// Then
 		Assertions.assertNotNull(resultat);
 		Assertions.assertEquals(0, resultat.getNbAdults());
 		Assertions.assertEquals(0, resultat.getNbChildren());
-		Assertions.assertEquals(1, resultat.getPersons().size());
+		Assertions.assertEquals(2, resultat.getPersons().size());
 		Assertions.assertEquals("Léo", resultat.getPersons().get(0).getFirstName());
 		Assertions.assertEquals("Durand", resultat.getPersons().get(0).getLastName());
+		Assertions.assertEquals("Christelle", resultat.getPersons().get(1).getFirstName());
+	    Assertions.assertEquals("Durand", resultat.getPersons().get(1).getLastName());
+		
 	}
 
 }
