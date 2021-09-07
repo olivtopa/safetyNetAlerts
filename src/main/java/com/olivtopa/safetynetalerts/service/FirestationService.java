@@ -62,6 +62,8 @@ public class FirestationService {
             personInFireStation.setFirstName(onePerson.getFirstName());
             personInFireStation.setLastName(onePerson.getLastName());
             personInFireStation.setBirthDate(medicalRecordForPerson.getBirthdate());
+            personInFireStation.setAddress(onePerson.getAddress());
+            personInFireStation.setPhone(onePerson.getPhone());
 
             persons.add(personInFireStation);
         });
