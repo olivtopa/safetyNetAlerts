@@ -1,8 +1,5 @@
 package com.olivtopa.safetynetalerts.controller;
 
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,13 +10,13 @@ import com.olivtopa.safetynetalerts.service.PersonInfoService;
 
 @RestController
 public class PersonInfoController {
-	
+
 	@Autowired
 	PersonInfoService personInfoService;
-	
+
 	@RequestMapping(value = "/personInfo", method = RequestMethod.GET)
-	public List<PersonInfo>getPersonInfo(String FirstName, String LastName){
-		
+	public PersonInfo returnPersonInfo(String FirstName, String LastName) {
+
 		return personInfoService.personDetails(FirstName, LastName);
 	}
 
