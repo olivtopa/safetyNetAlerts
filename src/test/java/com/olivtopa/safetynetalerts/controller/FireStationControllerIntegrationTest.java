@@ -5,23 +5,21 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.olivtopa.safetynetalerts.model.PersonsInFireStation;
-
 @SpringBootTest
 public class FireStationControllerIntegrationTest {
-	
+
 	@Autowired
 	private FireStationController controller;
-	
+
 	@Test
 	public void findPersonsInFireStationScope() {
-		
-		//GIVEN + WHEN
+
+		// GIVEN + WHEN
 		Object resultat = controller.findPersonsInFireStationScope(1);
-		
-		//THEN
+
+		// THEN
 		Assertions.assertThat(resultat).isNotNull(); // vérification très haut niveau.
-		
+
 	}
 
 }
