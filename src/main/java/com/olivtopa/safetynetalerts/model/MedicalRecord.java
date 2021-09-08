@@ -3,10 +3,13 @@ package com.olivtopa.safetynetalerts.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class MedicalRecord {
 
 	private String firstName;
 	private String lastName;
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private LocalDate birthdate;
 	private List<String> medications;
 	private List<String> allergies;
