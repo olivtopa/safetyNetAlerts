@@ -48,7 +48,7 @@ public class PersonInfoService {
 	public List<PersonInfo> personDetails(String firstName, String lastName) {
 
 		List<PersonInfo> personInfo = personDAO.getAll().stream()
-				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
+				.filter(p -> p.getFirstName().equals(firstName) && p.getLastName().equals(lastName))
 				.map(person -> buildPersonInfo(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
 		return personInfo;
@@ -57,7 +57,8 @@ public class PersonInfoService {
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
-				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName)).findAny().orElse(null);
+				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
+				.findAny().orElse(null);
 		return medical;
 
 	}
