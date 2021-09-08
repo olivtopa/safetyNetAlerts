@@ -20,9 +20,9 @@ public class PersonInfoController {
 	PersonInfoService personInfoService;
 	
 	@RequestMapping(value = "/personInfo", method = RequestMethod.GET)
-	public List<PersonInfo> returnPersonInfo(String FirstName, String LastName){
+	public List<PersonInfo> returnPersonInfo(String firstName, String lastName){
 		
-		return personInfoService.personDetails(FirstName, LastName);
+		return personInfoService.personDetails(firstName, lastName);
 	}
 
 }
