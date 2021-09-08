@@ -9,7 +9,6 @@ import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.model.Person;
 
 @Service
-
 public class PersonService {
 	
 	@Autowired
