@@ -1,5 +1,7 @@
 package com.olivtopa.safetynetalerts.controller;
 
+import java.util.List;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,7 @@ public class PersonInfoControllerIntegrationTest {
 	public void inhabitantByName() {
 
 		// GIVEN + WHEN
-		PersonInfo personInfo = controller.returnPersonInfo(FIRSTNAME, LASTNAME);
+		List<PersonInfo>  personInfo = controller.returnPersonInfo(FIRSTNAME, LASTNAME);
 
 		// THEN
 		Assertions.assertThat(personInfo).isNotNull();
