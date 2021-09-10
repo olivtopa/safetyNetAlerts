@@ -25,12 +25,12 @@ public class ChildAlertService {
 	private MedicalRecordDAO medicalRecordDAO;
 	
 	
-	private PersonList buildChildrenList(Person person, MedicalRecord medicalRecord) {
+	private PersonList buildPersonList(Person person, MedicalRecord medicalRecord) {
 
-		PersonList childrenList = new PersonList();
+		PersonList personList = new PersonList();
 
-		childrenList.setFirstName(person.getFirstName());
-		childrenList.setLastName(person.getLastName());
+		personList.setFirstName(person.getFirstName());
+		personList.setLastName(person.getLastName());
 
 		int age;
 		LocalDate birthdate = medicalRecord.getBirthdate();
@@ -38,15 +38,15 @@ public class ChildAlertService {
 
 		age = calculateAge(birthdate, currentdate);
 
-		childrenList.setAge(age);
+		personList.setAge(age);
 
-		return childrenList;
+		return personList;
 
 	}
 
 	public List<PersonList> finalChildrenList(String address) {
 		List<PersonList> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
-				person -> buildChildrenList(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
+				person -> buildPersonList(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
 		return foyer;
 	}
@@ -54,7 +54,7 @@ public class ChildAlertService {
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
 				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
-				.distinct().findAny().orElse(null);
+				.distinct().findAny().orElseThrow();
 		return medical;
 	}
 

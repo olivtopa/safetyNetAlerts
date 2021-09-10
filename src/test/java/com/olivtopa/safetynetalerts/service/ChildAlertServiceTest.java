@@ -1,5 +1,6 @@
 package com.olivtopa.safetynetalerts.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
@@ -29,16 +30,18 @@ public class ChildAlertServiceTest {
 	MedicalRecordDAO medicalRecordDAO;
 
 	@Test
-	void finalChildrenList() {
+	public void finalChildrenList() {
 
 		// GIVEN
 		Person person1 = new Person();
 		person1.setAddress("address1");
 		person1.setFirstName("Oliv");
+		person1.setLastName("DUPONT");
 
 		MedicalRecord medicalRecord1 = new MedicalRecord();
 		medicalRecord1.setFirstName("Oliv");
 		medicalRecord1.setLastName("DUPONT");
+		medicalRecord1.setBirthdate(LocalDate.of(2000, 5, 17));
 
 		Mockito.when(personDAO.getAll()).thenReturn(List.of(person1));
 		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord1));
