@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import com.olivtopa.safetynetalerts.dao.MedicalRecordDAO;
 import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.model.PersonList;
-
+import com.olivtopa.safetynetalerts.model.ChildrenList;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
 
@@ -43,8 +43,22 @@ public class ChildAlertService {
 		return personList;
 
 	}
+	
+	/*private ChildrenList buildChildrenList(PersonList person, MedicalRecord medicalRecord) {
 
-	public List<PersonList> finalChildrenList(String address) {
+		ChildrenList childrenList = new ChildrenList();
+
+		childrenList.setFirstName(person.getFirstName());
+		childrenList.setLastName(person.getLastName());
+		childrenList.setAge(person.getAge());
+
+		return childrenList;
+
+	}*/
+	
+	
+
+	public List<PersonList> personListByAddress(String address) {
 		List<PersonList> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
 				person -> buildPersonList(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
@@ -56,6 +70,15 @@ public class ChildAlertService {
 				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
 				.distinct().findAny().orElseThrow();
 		return medical;
+	}
+	
+	public List<PersonList> childrenList(String address){
+		
+		List<PersonList> children = personListByAddress(address).stream().filter(a -> a.getAge() <= 18)
+				.collect(Collectors.toList());
+		return children;
+		
+		
 	}
 
 	public int calculateAge(LocalDate birthdate, LocalDate currentDate) {
