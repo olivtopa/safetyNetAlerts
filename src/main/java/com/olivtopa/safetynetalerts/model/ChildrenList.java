@@ -6,6 +6,8 @@ public class ChildrenList {
 
 	private String firstName;
 	private String lastName;
+	private String address;
+	private String phone;
 	private int age;
 	private List<PersonList> personList;
 
@@ -39,6 +41,22 @@ public class ChildrenList {
 
 	public void setPersonList(List<PersonList> personList) {
 		this.personList = personList;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 }

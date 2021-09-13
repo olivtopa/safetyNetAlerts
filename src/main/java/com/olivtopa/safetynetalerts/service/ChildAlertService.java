@@ -31,6 +31,8 @@ public class ChildAlertService {
 
 		personList.setFirstName(person.getFirstName());
 		personList.setLastName(person.getLastName());
+		personList.setAddress(person.getAddress());
+		personList.setPhone(person.getPhone());
 
 		int age;
 		LocalDate birthdate = medicalRecord.getBirthdate();
@@ -51,6 +53,8 @@ public class ChildAlertService {
 
 		childrenList.setFirstName(person.getFirstName());
 		childrenList.setLastName(person.getLastName());
+		childrenList.setAddress(person.getAddress());
+		childrenList.setPhone(person.getPhone());
 		childrenList.setAge(person.getAge());
 		childrenList.setPersonList(personListByAddress(address));
 

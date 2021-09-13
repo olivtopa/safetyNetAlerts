@@ -1,11 +1,11 @@
 package com.olivtopa.safetynetalerts.model;
 
-import java.util.List;
-
 public class PersonList {
 
 	private String firstName;
 	private String lastName;
+	private String Address;
+	private String phone;
 	private int age;
 
 	public String getFirstName() {
@@ -30,6 +30,22 @@ public class PersonList {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public String getAddress() {
+		return Address;
+	}
+
+	public void setAddress(String address) {
+		Address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 }
