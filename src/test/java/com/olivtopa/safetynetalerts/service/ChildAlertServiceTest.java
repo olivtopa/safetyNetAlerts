@@ -77,4 +77,30 @@ public class ChildAlertServiceTest {
 		Assertions.assertThat(result.get(0).getAge() <= 18);
 
 	}
+
+	@Test
+	public void addressReturnEmptyListofChildren() {
+
+		// GIVEN
+		Person person = new Person();
+		person.setFirstName("Pierre");
+		person.setLastName("DUBOIS");
+		person.setAddress("address1");
+
+		MedicalRecord medicalRecord = new MedicalRecord();
+		medicalRecord.setFirstName("Pierre");
+		medicalRecord.setLastName("DUBOIS");
+		medicalRecord.setBirthdate(LocalDate.of(2000, 5, 17));
+
+		Mockito.when(personDAO.getAll()).thenReturn(List.of(person));
+
+		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord));
+
+		// WHEN
+		List<PersonList> result = childAlertService.childrenList("address1");
+
+		// THEN
+		Assertions.assertThat(result).isEmpty();
+
+	}
 }
