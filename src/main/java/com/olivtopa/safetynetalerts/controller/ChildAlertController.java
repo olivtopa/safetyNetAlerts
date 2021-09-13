@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.olivtopa.safetynetalerts.service.ChildAlertService;
-import com.olivtopa.safetynetalerts.model.PersonList;
+import com.olivtopa.safetynetalerts.model.ChildrenList;
 
 @RestController
 public class ChildAlertController {
@@ -17,8 +17,8 @@ public class ChildAlertController {
 	ChildAlertService childAlertService;
 
 	@RequestMapping(value = "/childAlert", method = RequestMethod.GET)
-	public List<PersonList>finalChildrenList(String address){
-		return childAlertService.finalChildrenList(address);
+	public List<ChildrenList>finalChildrenList(String address){
+		return childAlertService.childrenList(address);
 	}
 	
 }

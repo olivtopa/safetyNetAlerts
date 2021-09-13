@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import com.olivtopa.safetynetalerts.dao.MedicalRecordDAO;
 import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.model.PersonList;
+import com.olivtopa.safetynetalerts.model.ChildrenList;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
 
@@ -71,7 +72,7 @@ public class ChildAlertServiceTest {
 		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord));
 
 		// WHEN
-		List<PersonList> result = childAlertService.childrenList("address1");
+		List<ChildrenList> result = childAlertService.childrenList("address1");
 
 		// THEN
 		Assertions.assertThat(result.get(0).getAge() <= 18);
@@ -97,10 +98,11 @@ public class ChildAlertServiceTest {
 		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord));
 
 		// WHEN
-		List<PersonList> result = childAlertService.childrenList("address1");
+		List<ChildrenList> result = childAlertService.childrenList("address1");
 
 		// THEN
 		Assertions.assertThat(result).isEmpty();
 
 	}
+
 }

@@ -2,11 +2,12 @@ package com.olivtopa.safetynetalerts.model;
 
 import java.util.List;
 
-public class PersonList {
+public class ChildrenList {
 
 	private String firstName;
 	private String lastName;
 	private int age;
+	private List<PersonList> personList;
 
 	public String getFirstName() {
 		return firstName;
@@ -30,6 +31,14 @@ public class PersonList {
 
 	public void setAge(int age) {
 		this.age = age;
+	}
+
+	public List<PersonList> getPersonList() {
+		return personList;
+	}
+
+	public void setPersonList(List<PersonList> personList) {
+		this.personList = personList;
 	}
 
 }

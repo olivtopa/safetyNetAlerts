@@ -39,22 +39,24 @@ public class ChildAlertService {
 		age = calculateAge(birthdate, currentdate);
 
 		personList.setAge(age);
+		
 
 		return personList;
 
 	}
 	
-	/*private ChildrenList buildChildrenList(PersonList person, MedicalRecord medicalRecord) {
+	private ChildrenList buildChildrenList(PersonList person, MedicalRecord medicalRecord, String address) {
 
 		ChildrenList childrenList = new ChildrenList();
 
 		childrenList.setFirstName(person.getFirstName());
 		childrenList.setLastName(person.getLastName());
 		childrenList.setAge(person.getAge());
+		childrenList.setPersonList(personListByAddress(address));
 
 		return childrenList;
 
-	}*/
+	}
 	
 	
 
@@ -72,9 +74,10 @@ public class ChildAlertService {
 		return medical;
 	}
 	
-	public List<PersonList> childrenList(String address){
+	public List<ChildrenList> childrenList(String address){
 		
-		List<PersonList> children = personListByAddress(address).stream().filter(a -> a.getAge() <= 18)
+		List<ChildrenList> children = personListByAddress(address).stream().filter(a -> a.getAge() <= 18)
+				.map(person -> buildChildrenList(person, findMedicalRecord(person.getFirstName(), person.getLastName()),address))
 				.collect(Collectors.toList());
 		return children;
 		
