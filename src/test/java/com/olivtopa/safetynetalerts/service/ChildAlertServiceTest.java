@@ -30,7 +30,7 @@ public class ChildAlertServiceTest {
 	MedicalRecordDAO medicalRecordDAO;
 
 	@Test
-	public void finalChildrenList() {
+	public void addressReturnListOfPersons() {
 
 		// GIVEN
 		Person person1 = new Person();
@@ -46,9 +46,35 @@ public class ChildAlertServiceTest {
 		Mockito.when(personDAO.getAll()).thenReturn(List.of(person1));
 		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord1));
 		// WHEN
-		List<PersonList> result = childAlertService.finalChildrenList("address1");
+		List<PersonList> result = childAlertService.personListByAddress("address1");
 
 		// THEN
 		Assertions.assertThat(result.contains(person1));
+	}
+
+	@Test
+	public void addressReturnListofChildren() {
+
+		// GIVEN
+		Person person = new Person();
+		person.setFirstName("Pierre");
+		person.setLastName("DUBOIS");
+		person.setAddress("address1");
+
+		MedicalRecord medicalRecord = new MedicalRecord();
+		medicalRecord.setFirstName("Pierre");
+		medicalRecord.setLastName("DUBOIS");
+		medicalRecord.setBirthdate(LocalDate.of(2011, 5, 17));
+
+		Mockito.when(personDAO.getAll()).thenReturn(List.of(person));
+
+		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord));
+
+		// WHEN
+		List<PersonList> result = childAlertService.childrenList("address1");
+
+		// THEN
+		Assertions.assertThat(result.get(0).getAge() <= 18);
+
 	}
 }
