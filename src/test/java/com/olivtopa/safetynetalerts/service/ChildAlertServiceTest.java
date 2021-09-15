@@ -77,6 +77,7 @@ public class ChildAlertServiceTest {
 
 		// THEN
 		Assertions.assertThat(result.get(0).getAge()).isLessThanOrEqualTo(18);
+		Assertions.assertThat(result.get(0).getPersonList().isEmpty());
 
 	}
 
@@ -105,5 +106,7 @@ public class ChildAlertServiceTest {
 		Assertions.assertThat(result).isEmpty();
 
 	}
+	
+	
 
 }
