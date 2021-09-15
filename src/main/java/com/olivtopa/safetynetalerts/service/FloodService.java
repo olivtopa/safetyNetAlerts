@@ -69,7 +69,7 @@ public class FloodService {
 			List<FloodFoyer> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
 					person -> buildFloodFoyer(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 					.collect(Collectors.toList());
-			listOfFoyer.add(buildFloodFoyer(null,null));
+			listOfFoyer.add(buildFloodFoyer(null,null)); // A modifier
 		});
 
 		return listOfFoyer;
