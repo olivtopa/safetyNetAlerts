@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.olivtopa.safetynetalerts.service.FirestationService;
 import com.olivtopa.safetynetalerts.service.FloodService;
 import com.olivtopa.safetynetalerts.model.FloodFoyer;
 
