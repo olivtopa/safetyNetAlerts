@@ -2,20 +2,25 @@ package com.olivtopa.safetynetalerts.service;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.olivtopa.safetynetalerts.dao.FireStationDAO;
 import com.olivtopa.safetynetalerts.dao.MedicalRecordDAO;
 import com.olivtopa.safetynetalerts.dao.PersonDAO;
+import com.olivtopa.safetynetalerts.model.FiresStation;
 import com.olivtopa.safetynetalerts.model.FloodFoyer;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
 
 @Service
 public class FloodService {
+
+	private final FireStationDAO fireStationDAO = new FireStationDAO();
 
 	@Autowired
 	private PersonDAO personDAO;
@@ -46,11 +51,28 @@ public class FloodService {
 
 	}
 
-	public List<FloodFoyer> floodPersonListByAddress(String address) {
-		List<FloodFoyer> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
-				person -> buildFloodFoyer(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
-				.collect(Collectors.toList());
-		return foyer;
+	public List<FloodFoyer> floodFoyerListByStationNumbers(List<Integer> stations) {
+
+		List<String> fireStationAdressList = new ArrayList<>();
+		List<FloodFoyer>listOfFoyer = new ArrayList<>();
+
+		stations.forEach(stationNumber -> {
+
+			String addressOfFireStations = fireStationDAO.getAll().stream()
+					.filter(f -> f.getStation()==(stationNumber)).map(FiresStation::getAddress).findFirst()
+					.orElseThrow();
+			fireStationAdressList.add(addressOfFireStations);
+		});
+
+		fireStationAdressList.forEach(address -> {
+
+			List<FloodFoyer> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
+					person -> buildFloodFoyer(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
+					.collect(Collectors.toList());
+			listOfFoyer.add(foyer);
+		});
+
+		return listOfFoyer;
 	}
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {

@@ -57,6 +57,7 @@ public class ChildAlertService {
 		childrenList.setPhone(person.getPhone());
 		childrenList.setAge(person.getAge());
 		childrenList.setPersonList(personListByAddress(address));
+		//childrenList.setPersonList(personListByAddress(address).stream().filter(p -> p.getAge() >= 18).collect(Collectors.toList()));
 
 		return childrenList;
 
