@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.olivtopa.safetynetalerts.service.FloodService;
-import com.olivtopa.safetynetalerts.model.FloodFoyer;
+import com.olivtopa.safetynetalerts.model.FloodPerson;
 
 @RestController
 public class FloodController {
@@ -22,7 +22,7 @@ public class FloodController {
 	}
 
 	@RequestMapping(value = "/flood/stations", method = RequestMethod.GET)
-	public List<FloodFoyer>floodListOfFoyer(@RequestParam("stations") List<Integer> stations) {
+	public List<FloodPerson>floodListOfFoyer(@RequestParam("stations") List<Integer> stations) {
 		return null;
 	}
 

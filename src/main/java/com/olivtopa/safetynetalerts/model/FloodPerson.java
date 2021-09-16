@@ -2,7 +2,7 @@ package com.olivtopa.safetynetalerts.model;
 
 import java.util.List;
 
-public class FloodFoyer {
+public class FloodPerson {
 	
 	private String firstName;
 	private String lastName;
