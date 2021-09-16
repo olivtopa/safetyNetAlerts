@@ -29,7 +29,7 @@ public class FloodServiceTest {
 	PersonDAO personDAO;
 	@Mock
 	MedicalRecordDAO medicalRecordDAO;
-	
+
 	@Mock
 	FireStationDAO fireStationDAO;
 
@@ -62,18 +62,35 @@ public class FloodServiceTest {
 		medicalRecord2.setFirstName("Gil");
 		medicalRecord2.setLastName("DUPONT");
 		medicalRecord2.setBirthdate(LocalDate.of(2010, 8, 20));
+		
+		FiresStation firesStation1 = new FiresStation();
+		firesStation1.setAddress("address2");
+		firesStation1.setStation(2);
+		
+		Person person3 = new Person();
+		person3.setFirstName("Polo");
+		person3.setLastName("ROGER");
+		person3.setAddress("address2");
+		person3.setPhone("22 33 44 55 77");
+		
+		MedicalRecord medicalRecord3 = new MedicalRecord();
+		medicalRecord3.setFirstName("Polo");
+		medicalRecord3.setLastName("ROGER");
+		medicalRecord3.setBirthdate(LocalDate.of(2010, 8, 20));
+		
+		FiresStation firesStation2 = new FiresStation();
+		firesStation2.setAddress("address2");
+		firesStation2.setStation(2);
+		
 
-		Mockito.when(personDAO.getAll()).thenReturn(List.of(person, person2));
-		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord1, medicalRecord2));
-		Mockito.when(fireStationDAO.getAll()).thenReturn(List.of(firesStation));
+		Mockito.when(personDAO.getAll()).thenReturn(List.of(person, person2, person3));
+		
 		// WHEN
-	/*	List<String> result = floodService.floodFoyerListByStationNumbers(1);
+		List<String> result = floodService.floodAdressList();
 
 		// THEN
-		Assertions.assertThat(result)
-				.extracting(FloodFoyer::getFirstName, FloodFoyer::getLastName, FloodFoyer::getPhone)
-				.contains(new Tuple("Oliv", "DUPONT", "11 22 33 44 55"), new Tuple("Gil", "DUPONT", "22 33 44 55 66"));
-*/
+		Assertions.assertThat(result).isNotNull();
+		
 	}
 
 }

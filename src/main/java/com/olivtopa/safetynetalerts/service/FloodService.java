@@ -20,7 +20,8 @@ import com.olivtopa.safetynetalerts.model.Person;
 @Service
 public class FloodService {
 
-	private final FireStationDAO fireStationDAO = new FireStationDAO();
+	@Autowired
+	private FireStationDAO fireStationDAO;
 
 	@Autowired
 	private PersonDAO personDAO;
@@ -28,62 +29,10 @@ public class FloodService {
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
 
-	private FloodFoyer buildFloodFoyer(Person person, MedicalRecord medicalRecord) {
-
-		FloodFoyer floodFoyer = new FloodFoyer();
-
-		floodFoyer.setFirstName(person.getFirstName());
-		floodFoyer.setLastName(person.getLastName());
-		floodFoyer.setAddress(person.getAddress());
-		floodFoyer.setPhone(person.getPhone());
-		floodFoyer.setMedications(medicalRecord.getMedications());
-		floodFoyer.setAllergies(medicalRecord.getAllergies());
-
-		int age;
-		LocalDate birthdate = medicalRecord.getBirthdate();
-		LocalDate currentdate = LocalDate.now();
-
-		age = calculateAge(birthdate, currentdate);
-
-		floodFoyer.setAge(age);
-
-		return floodFoyer;
-
-	}
-
-	public List<FloodFoyer> floodFoyerListByStationNumbers(List<Integer> stations) {
-
-		List<String> fireStationAdressList = new ArrayList<>();
-		List<FloodFoyer>listOfFoyer = new ArrayList<>();
-
-		stations.forEach(stationNumber -> {
-
-			String addressOfFireStations = fireStationDAO.getAll().stream()
-					.filter(f -> f.getStation()==(stationNumber)).map(FiresStation::getAddress).findFirst()
-					.orElseThrow();
-			fireStationAdressList.add(addressOfFireStations);
-		});
-
-		fireStationAdressList.forEach(address -> {
-
-			List<FloodFoyer> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
-					person -> buildFloodFoyer(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
-					.collect(Collectors.toList());
-			listOfFoyer.add(buildFloodFoyer(null,null)); // A modifier
-		});
-
-		return listOfFoyer;
-	}
-
-	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
-		MedicalRecord medical = medicalRecordDAO.getAll().stream()
-				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
-				.distinct().findAny().orElseThrow();
-		return medical;
-	}
-
-	public int calculateAge(LocalDate birthdate, LocalDate currentDate) {
-		return Period.between(birthdate, currentDate).getYears();
+	public List<String> floodAdressList() {
+		List<String> addresses = personDAO.getAll().stream().map(Person::getAddress).distinct()
+				.collect(Collectors.toList());
+		return addresses;
 	}
 
 }

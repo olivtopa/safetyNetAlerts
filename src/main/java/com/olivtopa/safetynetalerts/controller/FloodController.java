@@ -23,7 +23,7 @@ public class FloodController {
 
 	@RequestMapping(value = "/flood/stations", method = RequestMethod.GET)
 	public List<FloodFoyer>floodListOfFoyer(@RequestParam("stations") List<Integer> stations) {
-		return floodService.floodFoyerListByStationNumbers(stations);
+		return null;
 	}
 
 }
