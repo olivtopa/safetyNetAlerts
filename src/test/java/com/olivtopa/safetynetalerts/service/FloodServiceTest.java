@@ -90,6 +90,7 @@ public class FloodServiceTest {
 
 		// THEN
 		Assertions.assertThat(result).isNotNull();
+		Assertions.assertThat(result).contains("address1","address2");
 		
 	}
 
