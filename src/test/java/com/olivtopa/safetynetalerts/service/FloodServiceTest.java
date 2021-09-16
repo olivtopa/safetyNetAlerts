@@ -18,7 +18,8 @@ import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
 import com.olivtopa.safetynetalerts.model.FiresStation;
-import com.olivtopa.safetynetalerts.model.FloodFoyer;
+import com.olivtopa.safetynetalerts.model.FloodPerson;
+import com.olivtopa.safetynetalerts.model.FloodAddress;
 
 @ExtendWith(MockitoExtension.class)
 public class FloodServiceTest {
@@ -86,11 +87,13 @@ public class FloodServiceTest {
 		Mockito.when(personDAO.getAll()).thenReturn(List.of(person, person2, person3));
 		
 		// WHEN
-		List<String> result = floodService.floodAdressList();
+		List<FloodAddress> result = floodService.buildAddressObject(person);
+		List<FloodAddress> resultat = floodService.buildAddressObject(person3);
 
 		// THEN
 		Assertions.assertThat(result).isNotNull();
-		Assertions.assertThat(result).contains("address1","address2");
+		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address1");
+		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address2");
 		
 	}
 
