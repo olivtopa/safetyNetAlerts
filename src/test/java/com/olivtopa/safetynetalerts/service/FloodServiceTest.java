@@ -35,7 +35,7 @@ public class FloodServiceTest {
 	FireStationDAO fireStationDAO;
 
 	@Test
-	public void adressReturnFoyer() {
+	public void adressReturnPersons() {
 
 		// GIVEN
 		Person person = new Person();
@@ -85,15 +85,19 @@ public class FloodServiceTest {
 		
 
 		Mockito.when(personDAO.getAll()).thenReturn(List.of(person, person2, person3));
+		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord1, medicalRecord2, medicalRecord3));
+		Mockito.when(fireStationDAO.getAll()).thenReturn(List.of(firesStation, firesStation1, firesStation2));
 		
 		// WHEN
-		List<FloodAddress> result = floodService.buildAddressObject(person);
-		List<FloodAddress> resultat = floodService.buildAddressObject(person3);
+		List<FloodAddress> result = floodService.buildAddressObject(person,"address1");
+		String resultat = floodService.foyerByFireStationNumber(1);
+		
 
 		// THEN
 		Assertions.assertThat(result).isNotNull();
 		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address1");
-		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address2");
+		Assertions.assertThat(resultat).isEqualTo("address1");
+		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getFloodPerson().get(0).getFirstName().contains("Oliv"));
 		
 	}
 
