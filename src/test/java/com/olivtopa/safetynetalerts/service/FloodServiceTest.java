@@ -80,7 +80,7 @@ public class FloodServiceTest {
 		medicalRecord3.setBirthdate(LocalDate.of(2010, 8, 20));
 		
 		FiresStation firesStation2 = new FiresStation();
-		firesStation2.setAddress("address2");
+		firesStation2.setAddress("address3");
 		firesStation2.setStation(2);
 		
 
@@ -90,13 +90,13 @@ public class FloodServiceTest {
 		
 		// WHEN
 		List<FloodAddress> result = floodService.buildAddressObject(person,"address1");
-		List<String> resultat = floodService.foyerByFireStationNumber(2);
+		List<String> resultat = floodService.foyerByFireStationNumber(1);
 		
 
 		// THEN
 		Assertions.assertThat(result).isNotNull();
 		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address1");
-		Assertions.assertThat(resultat).containsAnyOf("address1","address2");
+		Assertions.assertThat(resultat).containsExactly("address1","address2");
 		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getFloodPerson().get(0).getFirstName().contains("Oliv"));
 		
 	}
