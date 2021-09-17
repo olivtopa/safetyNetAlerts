@@ -63,11 +63,11 @@ public class FloodService {
 
 	}
 
-	public String foyerByFireStationNumber(int fireStationNumber) {
+	public List<String> foyerByFireStationNumber(int fireStationNumber) {
 
-		String fireStationAddresses = fireStationDAO.getAll().stream()
+		List<String> fireStationAddresses = fireStationDAO.getAll().stream()
 				.filter(s -> s.getStation() == (fireStationNumber)).map(FiresStation::getAddress)
-				.findAny().orElseThrow();
+				.collect(Collectors.toList());
 
 		return fireStationAddresses;
 

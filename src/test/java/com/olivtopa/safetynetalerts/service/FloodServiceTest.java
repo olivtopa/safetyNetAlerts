@@ -66,7 +66,7 @@ public class FloodServiceTest {
 		
 		FiresStation firesStation1 = new FiresStation();
 		firesStation1.setAddress("address2");
-		firesStation1.setStation(2);
+		firesStation1.setStation(1);
 		
 		Person person3 = new Person();
 		person3.setFirstName("Polo");
@@ -90,13 +90,13 @@ public class FloodServiceTest {
 		
 		// WHEN
 		List<FloodAddress> result = floodService.buildAddressObject(person,"address1");
-		String resultat = floodService.foyerByFireStationNumber(1);
+		List<String> resultat = floodService.foyerByFireStationNumber(2);
 		
 
 		// THEN
 		Assertions.assertThat(result).isNotNull();
 		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address1");
-		Assertions.assertThat(resultat).isEqualTo("address1");
+		Assertions.assertThat(resultat).containsAnyOf("address1","address2");
 		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getFloodPerson().get(0).getFirstName().contains("Oliv"));
 		
 	}
