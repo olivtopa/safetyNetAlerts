@@ -2,7 +2,7 @@ package com.olivtopa.safetynetalerts.service;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +17,6 @@ import com.olivtopa.safetynetalerts.model.FloodAddress;
 import com.olivtopa.safetynetalerts.model.FloodPerson;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
-import com.olivtopa.safetynetalerts.model.PersonList;
 
 @Service
 public class FloodService {
@@ -31,10 +30,11 @@ public class FloodService {
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
 
-	private FloodAddress buildFloodAddress(Person person, String fireStationAddresses) {
+	private FloodAddress buildFloodAddress(List<FloodPerson> person, String fireStationAddresses) {
 
 		FloodAddress floodAddress = new FloodAddress();
-		floodAddress.setAddress(person.getAddress());
+
+		floodAddress.setAddress(fireStationAddresses);
 		floodAddress.setFloodPerson(floodPersonListByAddress(fireStationAddresses));
 
 		return floodAddress;
@@ -63,27 +63,30 @@ public class FloodService {
 
 	}
 
-	public List<String> foyerByFireStationNumber(int fireStationNumber) {
+	public FloodAddress finalFloodList(List<Integer> stations) {
+		
 
-		List<String> fireStationAddresses = fireStationDAO.getAll().stream()
-				.filter(s -> s.getStation() == (fireStationNumber)).map(FiresStation::getAddress)
-				.collect(Collectors.toList());
+		stations.forEach(station -> foyerByFireStationNumber(station));
+		
+		return buildFloodAddress(floodPersonListByAddress(foyerByFireStationNumber(station)),
+				foyerByFireStationNumber(station));
+
+	}
+
+	public String foyerByFireStationNumber(int fireStationNumber) {
+
+		String fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation() == fireStationNumber)
+				.map(FiresStation::getAddress).findAny().orElseThrow();
 
 		return fireStationAddresses;
 
 	}
 
-	public List<FloodAddress> buildAddressObject(Person person, String fireStationAddresses) {
-
-		List<FloodAddress> floodAddress = personDAO.getAll().stream()
-				.map(p -> buildFloodAddress(p, fireStationAddresses)).collect(Collectors.toList());
-
-		return floodAddress;
-
-	}
+	
 
 	public List<FloodPerson> floodPersonListByAddress(String fireStationAddresses) {
-		List<FloodPerson> floodPerson = personDAO.getAll().stream().filter(a -> a.getAddress().equals(fireStationAddresses))
+		List<FloodPerson> floodPerson = personDAO.getAll().stream()
+				.filter(a -> a.getAddress().equals(fireStationAddresses))
 				.map(person -> buildFloodPerson(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
 		return floodPerson;
