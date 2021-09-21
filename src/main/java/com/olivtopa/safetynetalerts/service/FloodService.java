@@ -40,7 +40,7 @@ public class FloodService {
 		return floodAddress;
 	}
 
-	private FloodPerson buildFloodPerson(Person person, MedicalRecord medicalRecord) {
+	public FloodPerson buildFloodPerson(Person person, MedicalRecord medicalRecord) {
 
 		FloodPerson floodPerson = new FloodPerson();
 
@@ -48,8 +48,8 @@ public class FloodService {
 		floodPerson.setLastName(person.getLastName());
 		floodPerson.setAddress(person.getAddress());
 		floodPerson.setPhone(person.getPhone());
-		floodPerson.setAllergies(null);
-		floodPerson.setMedications(null);
+		floodPerson.setAllergies(medicalRecord.getAllergies());
+		floodPerson.setMedications(medicalRecord.getMedications());
 
 		int age;
 		LocalDate birthdate = medicalRecord.getBirthdate();
@@ -63,24 +63,20 @@ public class FloodService {
 
 	}
 
-	public FloodAddress finalFloodList(List<Integer> stations) {
-		
+	public List<FloodAddress> finalFloodList(List<Integer> stations) {
 
-		stations.forEach(station -> foyerByFireStationNumber(station));
-		
-		return buildFloodAddress(floodPersonListByAddress(foyerByFireStationNumber(station)),
-				foyerByFireStationNumber(station));
+		   return stations.stream()
+		       .flatMap(station -> foyerByFireStationNumber(station).stream()) 
+		       .map(address -> buildFloodAddress(floodPersonListByAddress(address), address))
+		       .collect(Collectors.toList());
+		}
 
-	}
+	public List<String> foyerByFireStationNumber(int fireStationNumber) {
 
-	public String foyerByFireStationNumber(int fireStationNumber) {
-
-		String fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation() == fireStationNumber)
-				.map(FiresStation::getAddress).findAny().orElseThrow();
-
-		return fireStationAddresses;
-
-	}
+		 List<String> fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation() == fireStationNumber)
+		   .map(FiresStation::getAddress).collect(Collectors.toList());
+		   return fireStationAddresses;
+		}
 
 	
 

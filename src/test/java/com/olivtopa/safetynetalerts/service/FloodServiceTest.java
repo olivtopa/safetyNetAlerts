@@ -48,7 +48,7 @@ public class FloodServiceTest {
 		medicalRecord1.setFirstName("Oliv");
 		medicalRecord1.setLastName("DUPONT");
 		medicalRecord1.setBirthdate(LocalDate.of(2000, 5, 17));
-		
+
 		FiresStation firesStation = new FiresStation();
 		firesStation.setAddress("address1");
 		firesStation.setStation(1);
@@ -63,42 +63,42 @@ public class FloodServiceTest {
 		medicalRecord2.setFirstName("Gil");
 		medicalRecord2.setLastName("DUPONT");
 		medicalRecord2.setBirthdate(LocalDate.of(2010, 8, 20));
-		
+
 		FiresStation firesStation1 = new FiresStation();
 		firesStation1.setAddress("address2");
 		firesStation1.setStation(1);
-		
+
 		Person person3 = new Person();
 		person3.setFirstName("Polo");
 		person3.setLastName("ROGER");
 		person3.setAddress("address2");
 		person3.setPhone("22 33 44 55 77");
-		
+
 		MedicalRecord medicalRecord3 = new MedicalRecord();
 		medicalRecord3.setFirstName("Polo");
 		medicalRecord3.setLastName("ROGER");
 		medicalRecord3.setBirthdate(LocalDate.of(2010, 8, 20));
-		
+
 		FiresStation firesStation2 = new FiresStation();
 		firesStation2.setAddress("address3");
 		firesStation2.setStation(2);
-		
 
 		Mockito.when(personDAO.getAll()).thenReturn(List.of(person, person2, person3));
 		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord1, medicalRecord2, medicalRecord3));
 		Mockito.when(fireStationDAO.getAll()).thenReturn(List.of(firesStation, firesStation1, firesStation2));
-		
+
 		// WHEN
-		List<FloodAddress> result = floodService.buildAddressObject(person,"address1");
+
 		List<String> resultat = floodService.foyerByFireStationNumber(1);
-		
+		FloodPerson floodPerson = floodService.buildFloodPerson(person, medicalRecord1);
 
 		// THEN
-		Assertions.assertThat(result).isNotNull();
-		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getAddress()).contains("address1");
-		Assertions.assertThat(resultat).containsExactly("address1","address2");
-		Assertions.assertThat(result).extracting(floodAddress -> floodAddress.getFloodPerson().get(0).getFirstName().contains("Oliv"));
-		
+		// Assertions.assertThat(result).isNotNull();
+		Assertions.assertThat(floodPerson).extracting(FloodPerson::getFirstName, FloodPerson::getLastName)
+				.containsExactly(new Tuple("Oliv", "DUPONT"));
+
+		Assertions.assertThat(resultat).containsExactly("address1", "address2");
+
 	}
 
 }
