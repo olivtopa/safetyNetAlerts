@@ -142,16 +142,12 @@ public class FloodServiceTest {
 		firesStation2.setAddress("address3");
 		firesStation2.setStation(2);
 
-		Mockito.when(personDAO.getAll()).thenReturn(List.of(person, person2, person3));
-		Mockito.when(medicalRecordDAO.getAll()).thenReturn(List.of(medicalRecord1, medicalRecord2, medicalRecord3));
-		Mockito.when(fireStationDAO.getAll()).thenReturn(List.of(firesStation, firesStation1, firesStation2));
-
 		// WHEN
 		FloodPerson floodPerson = floodService.buildFloodPerson(person, medicalRecord1);
 
 		// THEN
 		Assertions.assertThat(floodPerson).extracting(FloodPerson::getFirstName, FloodPerson::getLastName)
-				.containsExactly(new Tuple("Oliv", "DUPONT"));
+				.containsExactly("Oliv", "DUPONT");
 
 	}
 

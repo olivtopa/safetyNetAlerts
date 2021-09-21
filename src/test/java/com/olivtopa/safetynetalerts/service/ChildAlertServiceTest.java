@@ -51,7 +51,7 @@ public class ChildAlertServiceTest {
 
 		// THEN
 		Assertions.assertThat(result).extracting(PersonList::getFirstName, PersonList::getLastName)
-				.contains(new Tuple("Oliv", "DUPONT"));
+				.containsExactly(new Tuple("Oliv", "DUPONT"));
 	}
 
 	@Test
