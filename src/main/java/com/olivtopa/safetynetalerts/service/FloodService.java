@@ -66,12 +66,12 @@ public class FloodService {
 	public List<FloodAddress> finalFloodList(List<Integer> stations) {
 
 		   return stations.stream()
-		       .flatMap(station -> foyerByFireStationNumber(station).stream()) 
+		       .flatMap(station -> addressByFireStationNumber(station).stream()) 
 		       .map(address -> buildFloodAddress(floodPersonListByAddress(address), address))
 		       .collect(Collectors.toList());
 		}
 
-	public List<String> foyerByFireStationNumber(int fireStationNumber) {
+	public List<String> addressByFireStationNumber(int fireStationNumber) {
 
 		 List<String> fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation() == fireStationNumber)
 		   .map(FiresStation::getAddress).collect(Collectors.toList());
