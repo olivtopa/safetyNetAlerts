@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -205,7 +204,8 @@ public class FloodServiceTest {
 		// WHEN
 		List<FloodAddress> resultat = floodService.finalFloodList(List.of(1, 2));
 		// THEN
-		Assertions.assertThat(resultat).extracting(FloodAddress::getAddress).containsExactly("address1", "address2", "address3");
+		Assertions.assertThat(resultat).extracting(FloodAddress::getAddress).containsExactly("address1", "address2",
+				"address3");
 
 	}
 }
