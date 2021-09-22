@@ -15,7 +15,7 @@ public class FireStationDAO {
 	
 	@Autowired
 	EntitiesLoader entitiesLoader;
-	@Autowired FiresStation firesStation;
+	FiresStation firesStation;
 
 	public List<FiresStation> getAll() {
 		try {
