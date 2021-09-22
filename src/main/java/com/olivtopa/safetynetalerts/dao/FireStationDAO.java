@@ -15,6 +15,7 @@ public class FireStationDAO {
 	
 	@Autowired
 	EntitiesLoader entitiesLoader;
+	@Autowired FiresStation firesStation;
 
 	public List<FiresStation> getAll() {
 		try {
@@ -22,6 +23,18 @@ public class FireStationDAO {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public FiresStation create(FiresStation fireStation) {
+		
+				
+		FiresStation newFiresStation = new FiresStation();
+		
+		firesStation.setAddress(newFiresStation.getAddress());
+		firesStation.setStation(newFiresStation.getStation());
+		
+		return firesStation;
+				
 	}
 
 }
