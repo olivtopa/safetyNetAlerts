@@ -93,10 +93,14 @@ public class FirestationService {
 	private int computeAge(LocalDate localDate) {
 		return Period.between(localDate, LocalDate.now()).getYears();
 	}
+	
+	public List<FiresStation> getAll(){
+		return fireStationDAO.getAll();
+	}
 
 	public List<FiresStation> create(FiresStation newFiresStation) {
 
-		List<FiresStation> firesStation = fireStationDAO.getAll();
+		List<FiresStation> firesStation = getAll();
 		
 		firesStation.add(newFiresStation);
 
