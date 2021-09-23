@@ -1,5 +1,7 @@
 package com.olivtopa.safetynetalerts.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,8 +32,8 @@ public class FireStationController {
 	}
 	
 	@PostMapping(value = "/firestation")
-	public void addAStation(@RequestBody FiresStation newFiresStation) {
-		fireStationDAO.create(newFiresStation);
+	public List<FiresStation> addAStation(@RequestBody FiresStation newFiresStation) {
+		return firestationService.create(newFiresStation);
 	}
 
 }
