@@ -35,5 +35,10 @@ public class FireStationController {
 	public List<FiresStation> addAStation(@RequestBody FiresStation newFiresStation) {
 		return firestationService.create(newFiresStation);
 	}
+	
+	@RequestMapping(value = "/firestations", method = RequestMethod.GET)
+	public List<FiresStation>AllFiresStation(){
+		return firestationService.getAll();
+	}
 
 }

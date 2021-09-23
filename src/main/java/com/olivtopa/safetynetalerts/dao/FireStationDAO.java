@@ -24,4 +24,12 @@ public class FireStationDAO {
 		}
 	}
 
+	public  void addOnfile() {
+		try {
+			entitiesLoader.addOnfile(File.FILENAME).setFirestations(getAll());
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 }
