@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.olivtopa.safetynetalerts.constant.File;
@@ -25,13 +26,14 @@ public class EntitiesLoader {
 
 	}
 
-public Entities addOnfile(String filename) throws IOException {
+public void addOnfile(String filename) throws IOException {
 		
 		
 		objectMapper.registerModule(new JavaTimeModule());
 		
+		JsonGenerator jsonFilename = null;
 		
-		return objectMapper.writeValue(File.FILENAME,fireStationController.addAStation(firesStation));
+		objectMapper.writeValue(jsonFilename,firesStation);
 
 	}
 }
