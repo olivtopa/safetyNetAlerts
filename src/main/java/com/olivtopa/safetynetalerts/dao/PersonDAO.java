@@ -7,13 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.olivtopa.safetynetalerts.constant.File;
 import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
-
+import com.olivtopa.safetynetalerts.model.Entities;
 import com.olivtopa.safetynetalerts.model.Person;
 
 @Repository
 public class PersonDAO {
-
-	
 
 	public List<Person> getAll() {
 		try {
@@ -22,6 +20,19 @@ public class PersonDAO {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
+	}
+
+	public void create(Person person) {
+		try {
+			EntitiesLoader entitiesLoader = new EntitiesLoader();
+			Entities entities = entitiesLoader.load(File.FILENAME);
+			entities.getPersons().add(person);
+
+			entitiesLoader.write(File.FILENAME, entities);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
 }

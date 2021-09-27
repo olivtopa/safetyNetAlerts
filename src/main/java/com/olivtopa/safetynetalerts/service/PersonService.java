@@ -17,6 +17,12 @@ public class PersonService {
 	public List<Person> getAll() {
 		return personDAO.getAll();
 	}
+
+	public List<Person> create(Person newPerson) {
+		List<Person> person = getAll();
+		person.add(newPerson);
+		return person;
+	}
 	
 
 }
