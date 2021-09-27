@@ -1,14 +1,16 @@
 package com.olivtopa.safetynetalerts.dao;
 
-import java.io.IOException;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.olivtopa.safetynetalerts.constant.File;
 import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
+import com.olivtopa.safetynetalerts.model.Entities;
 import com.olivtopa.safetynetalerts.model.FiresStation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+
+import java.io.IOException;
+import java.util.List;
 
 @Repository
 public class FireStationDAO {
@@ -24,9 +26,13 @@ public class FireStationDAO {
 		}
 	}
 
-	public  void addOnfile() {
+	public  void create(FiresStation firesStation) {
 		try {
-			entitiesLoader.addOnfile(File.FILENAME).setFirestations(getAll());
+			Entities entities = entitiesLoader.load(File.FILENAME);
+			entities.getFirestations().add(firesStation);
+			
+			entitiesLoader.write(File.FILENAME, entities);
+			
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}

@@ -98,6 +98,7 @@ public class FirestationService {
 		return fireStationDAO.getAll();
 	}
 
+
 	public List<FiresStation> create(FiresStation newFiresStation) {
 
 		List<FiresStation> firesStation = getAll();

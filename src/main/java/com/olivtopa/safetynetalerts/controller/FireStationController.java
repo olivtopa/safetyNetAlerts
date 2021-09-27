@@ -37,7 +37,7 @@ public class FireStationController {
 	}
 	
 	@RequestMapping(value = "/firestations", method = RequestMethod.GET)
-	public List<FiresStation>AllFiresStation(){
+	public List<FiresStation>allFiresStation(){
 		return firestationService.getAll();
 	}
 
