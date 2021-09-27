@@ -10,10 +10,10 @@ import com.olivtopa.safetynetalerts.model.Person;
 
 @Service
 public class PersonService {
-	
+
 	@Autowired
 	private PersonDAO personDAO;
-	
+
 	public List<Person> getAll() {
 		return personDAO.getAll();
 	}
@@ -21,8 +21,8 @@ public class PersonService {
 	public List<Person> create(Person newPerson) {
 		List<Person> person = getAll();
 		person.add(newPerson);
+		personDAO.create(newPerson);
 		return person;
 	}
-	
 
 }

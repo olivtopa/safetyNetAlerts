@@ -21,6 +21,7 @@ public class MedicalRecordService {
 	public List<MedicalRecord> create(MedicalRecord NewMedicalRecord){
 		List<MedicalRecord> medicalRecord = getAll();
 		medicalRecord.add(NewMedicalRecord);
+		medicalRecordDAO.create(NewMedicalRecord);
 		return medicalRecord;
 	}
 

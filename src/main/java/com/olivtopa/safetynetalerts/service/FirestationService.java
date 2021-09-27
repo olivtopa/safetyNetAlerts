@@ -104,6 +104,7 @@ public class FirestationService {
 		List<FiresStation> firesStation = getAll();
 		
 		firesStation.add(newFiresStation);
+		fireStationDAO.create(newFiresStation);
 
 		return firesStation;
 
