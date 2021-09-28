@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class FireStationDAO {
@@ -40,8 +39,7 @@ public class FireStationDAO {
 		try {
 			EntitiesLoader entitiesLoader = new EntitiesLoader();
 			Entities entities = entitiesLoader.load(File.FILENAME);
-			entities.getFirestations().stream().filter(p -> p.getAddress().equals(firesStation.getAddress()))
-					.collect(Collectors.toList());
+			entities.getFirestations().removeIf(p -> p.getAddress().equals(firesStation.getAddress()));
 			entities.getFirestations().add(firesStation);
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
