@@ -2,6 +2,7 @@ package com.olivtopa.safetynetalerts.dao;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -36,5 +37,18 @@ public class MedicalRecordDAO {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	public void update(MedicalRecord medicalRecord) {
+		try {
+			EntitiesLoader entitiesLoader = new EntitiesLoader();
+			Entities entities = entitiesLoader.load(File.FILENAME);
+			entities.getMedicalrecords().stream().filter(m -> m.getFirstName().equals(medicalRecord.getFirstName())
+					&& m.getLastName().equals(medicalRecord.getLastName())).collect(Collectors.toList());
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+
+		}
 	}
 }

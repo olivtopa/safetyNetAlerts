@@ -1,11 +1,14 @@
 package com.olivtopa.safetynetalerts.service;
 
+
+
+import org.assertj.core.groups.Tuple;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.when;
@@ -17,7 +20,7 @@ import com.olivtopa.safetynetalerts.dao.FireStationDAO;
 import com.olivtopa.safetynetalerts.dao.MedicalRecordDAO;
 import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.model.FiresStation;
-
+import com.olivtopa.safetynetalerts.model.FloodPerson;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
 import com.olivtopa.safetynetalerts.model.PersonsInFireStation;
@@ -85,5 +88,28 @@ class FirestationServiceTest {
 		medicalRecord.setBirthdate(LocalDate.of(year, month, day));
 		return medicalRecord;
 	}
+	
+	/*@Test
+	public void creatAnewFireStationTest() {
+
+		// GIVEN
+		FiresStation firesStation = new FiresStation();
+		firesStation.setAddress("address1");
+		firesStation.setStation(1);
+
+		FiresStation newFiresStation = new FiresStation();
+		newFiresStation.setAddress("address2");
+		newFiresStation.setStation(2);
+
+		Mockito.when(fireStationDAO.getAll()).thenReturn(List.of(firesStation));
+
+		// WHEN
+		List<FiresStation> newFireStation = firestationService.create(newFiresStation);
+
+		// THEN
+		org.assertj.core.api.Assertions.assertThat(newFireStation).extracting(firesStation.getStation(),firesStation.getAddress())
+		.containsExactly(new Tuple(5, "address2"));
+		//Assertions.assertTrue(newFireStation.contains("address1"));
+	}*/
 
 }

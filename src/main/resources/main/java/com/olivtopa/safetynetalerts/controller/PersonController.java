@@ -3,7 +3,6 @@ package com.olivtopa.safetynetalerts.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,12 +28,6 @@ public class PersonController {
 	@PostMapping(value = "/person")
 	public List<Person>addPerson(@RequestBody Person newPerson){
 		return personService.create(newPerson);
-	}
-	
-	@PutMapping(value ="/person")
-	public List<Person>updatePerson(@RequestBody Person NewPerson){
-		return personService.update(NewPerson);
-		
 	}
 
 }

@@ -13,16 +13,23 @@ public class MedicalRecordService {
 
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
-	
-	public List<MedicalRecord> getAll(){
+
+	public List<MedicalRecord> getAll() {
 		return medicalRecordDAO.getAll();
 	}
-	
-	public List<MedicalRecord> create(MedicalRecord NewMedicalRecord){
+
+	public List<MedicalRecord> create(MedicalRecord NewMedicalRecord) {
 		List<MedicalRecord> medicalRecord = getAll();
 		medicalRecord.add(NewMedicalRecord);
 		medicalRecordDAO.create(NewMedicalRecord);
 		return medicalRecord;
 	}
 
+	public List<MedicalRecord> update(MedicalRecord NewMedicalRecord) {
+		List<MedicalRecord> medicalRecord = getAll();
+		medicalRecord.add(NewMedicalRecord);
+		medicalRecordDAO.update(NewMedicalRecord);
+		return medicalRecord;
+
+	}
 }

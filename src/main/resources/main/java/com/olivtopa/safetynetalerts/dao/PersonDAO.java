@@ -2,7 +2,6 @@ package com.olivtopa.safetynetalerts.dao;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
@@ -25,28 +24,14 @@ public class PersonDAO {
 
 	public void create(Person person) {
 		try {
-			EntitiesLoader entitiesLoader = new EntitiesLoader();
 			Entities entities = entitiesLoader.load(File.FILENAME);
 			entities.getPersons().add(person);
 
-			entitiesLoader.write(File.FILENAME, entities);
+			entitiesLoader.write(File.FILENAME);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 
 	}
-	
-	public void update(Person person) {
-		try {
-			EntitiesLoader entitiesLoader = new EntitiesLoader();
-			Entities entities = entitiesLoader.load(File.FILENAME);
-			entities.getPersons().stream().filter(p->p.getFirstName().
-					equals(person.getFirstName())&& person.getLastName().equals(person.getLastName())).collect(Collectors.toList());
-			entities.getPersons().add(person);
-			entitiesLoader.write(File.FILENAME, entities);
-		}catch (IOException e) {
-			throw new RuntimeException(e);
-	}
 
-}
 }

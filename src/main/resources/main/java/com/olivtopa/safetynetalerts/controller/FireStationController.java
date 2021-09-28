@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,14 +36,9 @@ public class FireStationController {
 		return firestationService.create(newFiresStation);
 	}
 	
-/*	@RequestMapping(value = "/firestation", method = RequestMethod.GET)
+	@RequestMapping(value = "/firestations", method = RequestMethod.GET)
 	public List<FiresStation>allFiresStation(){
 		return firestationService.getAll();
-	}*/
-	
-	@PutMapping(value = "/firestation")
-	public List<FiresStation> update(@RequestBody FiresStation newFiresStation) {
-		return firestationService.update(newFiresStation);
 	}
 
 }

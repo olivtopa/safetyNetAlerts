@@ -34,12 +34,17 @@ public class FirestationService {
 	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 
 		Set<String> addressOfFireStations = fireStationDAO.getAll().stream()
-				.filter(firesStation -> firesStation.getStation() == stationNumber).map(FiresStation::getAddress)
-				.collect(Collectors.toSet());
+				.filter(firesStation -> firesStation.getStation() == stationNumber) // on filtre sur la station demandée
+				.map(FiresStation::getAddress) // on extrait le champ qui nous intéresse
+				.collect(Collectors.toSet()); // on stocke dans une structure qui permet de savoir rapidement si une
+												// adresse est connue
 
 		List<Person> allPersons = personDAO.getAll().stream()
-				.filter(person -> addressOfFireStations.contains(person.getAddress()))
-
+				.filter(person -> addressOfFireStations.contains(person.getAddress())) // la méthode contains permet de
+																						// savoir si l'adresse de la
+																						// personne est dans toutes les
+																						// adresses dans le périmètre de
+																						// la station
 				.collect(Collectors.toList());
 
 		return buildResult(allPersons, medicalRecordDAO.getAll());
@@ -88,27 +93,19 @@ public class FirestationService {
 	private int computeAge(LocalDate localDate) {
 		return Period.between(localDate, LocalDate.now()).getYears();
 	}
-
-	public List<FiresStation> getAll() {
+	
+	public List<FiresStation> getAll(){
 		return fireStationDAO.getAll();
 	}
+
 
 	public List<FiresStation> create(FiresStation newFiresStation) {
 
 		List<FiresStation> firesStation = getAll();
-
-		firesStation.add(newFiresStation);
-		fireStationDAO.create(newFiresStation);
-
-		return firesStation;
-
-	}
-	
-	public List<FiresStation> update(FiresStation newFiresStation){
-		List<FiresStation> firesStation = getAll();
-		firesStation.add(newFiresStation);
-		fireStationDAO.update(newFiresStation);
-		return firesStation;
 		
+		firesStation.add(newFiresStation);
+
+		return firesStation;
+
 	}
 }
