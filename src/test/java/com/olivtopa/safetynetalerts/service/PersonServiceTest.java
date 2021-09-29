@@ -41,15 +41,16 @@ class PersonServiceTest {
 		List<Person> persons = new ArrayList<>();
 		persons.add(person1);
 		persons.add(person2);
+		when(personDAO.getAll()).thenReturn(persons);
 
 		Person newPerson = buildPerson("Oliv", "Topa", "11 Bd truc");
 
 		// WHEN
-		List<Person> resultat = personService.update(newPerson);
+		personService.update(newPerson);
 
 		// THEN
 
-		Assertions.assertThat(resultat.get(0).getAddress()).isEqualTo("11 Bd truc");
+		Assertions.assertThat(persons.get(2).getAddress()).isEqualTo("11 Bd truc");
 
 	}
 
