@@ -24,14 +24,13 @@ public class PersonService {
 		personDAO.create(newPerson);
 		return person;
 	}
-	
-	public List<Person> update(Person newPerson){
+
+	public List<Person> update(Person newPerson) {
 		List<Person> person = getAll();
 		person.add(newPerson);
 		personDAO.update(newPerson);
 		return person;
-		
-		
+
 	}
 
 }
