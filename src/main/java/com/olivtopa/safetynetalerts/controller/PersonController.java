@@ -14,27 +14,27 @@ import com.olivtopa.safetynetalerts.service.PersonService;
 
 @RestController
 public class PersonController {
-	
+
 	private final PersonService personService;
-	
+
 	public PersonController(PersonService personService) {
 		this.personService = personService;
 	}
-	
+
 	@RequestMapping(value = "/persons", method = RequestMethod.GET)
 	public List<Person> getAll() {
 		return personService.getAll();
 	}
-	
+
 	@PostMapping(value = "/person")
-	public List<Person>addPerson(@RequestBody Person newPerson){
-		return personService.create(newPerson);
+	public void addPerson(@RequestBody Person newPerson) {
+		personService.create(newPerson);
 	}
-	
-	@PutMapping(value ="/person")
-	public List<Person>updatePerson(@RequestBody Person NewPerson){
-		return personService.update(NewPerson);
-		
+
+	@PutMapping(value = "/person")
+	public void updatePerson(@RequestBody Person NewPerson) {
+		personService.update(NewPerson);
+
 	}
 
 }

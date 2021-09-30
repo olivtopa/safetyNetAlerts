@@ -18,18 +18,13 @@ public class PersonService {
 		return personDAO.getAll();
 	}
 
-	public List<Person> create(Person newPerson) {
-		List<Person> person = getAll();
-		person.add(newPerson);
+	public void create(Person newPerson) {
 		personDAO.create(newPerson);
-		return person;
+
 	}
 
-	public List<Person> update(Person newPerson) {
-		List<Person> person = getAll();
-		person.add(newPerson);
+	public void update(Person newPerson) {
 		personDAO.update(newPerson);
-		return person;
 
 	}
 

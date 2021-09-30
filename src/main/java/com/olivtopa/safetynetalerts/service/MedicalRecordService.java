@@ -18,18 +18,13 @@ public class MedicalRecordService {
 		return medicalRecordDAO.getAll();
 	}
 
-	public List<MedicalRecord> create(MedicalRecord NewMedicalRecord) {
-		List<MedicalRecord> medicalRecord = getAll();
-		medicalRecord.add(NewMedicalRecord);
+	public void create(MedicalRecord NewMedicalRecord) {
 		medicalRecordDAO.create(NewMedicalRecord);
-		return medicalRecord;
+
 	}
 
-	public List<MedicalRecord> update(MedicalRecord NewMedicalRecord) {
-		List<MedicalRecord> medicalRecord = getAll();
-		medicalRecord.add(NewMedicalRecord);
+	public void update(MedicalRecord NewMedicalRecord) {
 		medicalRecordDAO.update(NewMedicalRecord);
-		return medicalRecord;
 
 	}
 }

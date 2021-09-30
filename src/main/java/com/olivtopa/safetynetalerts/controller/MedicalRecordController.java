@@ -20,9 +20,9 @@ public class MedicalRecordController {
 	MedicalRecordService medicalRecordService;
 
 	@PostMapping(value = "/medicalRecord")
-	public List<MedicalRecord> addMedicalRecord(@RequestBody MedicalRecord newMedicalRecord) {
+	public void addMedicalRecord(@RequestBody MedicalRecord newMedicalRecord) {
 
-		return medicalRecordService.create(newMedicalRecord);
+		medicalRecordService.create(newMedicalRecord);
 	}
 
 	@RequestMapping(value = "/medicalRecord", method = RequestMethod.GET)
@@ -31,8 +31,8 @@ public class MedicalRecordController {
 	}
 
 	@PutMapping(value = "/medicalRecord")
-	public List<MedicalRecord> update(@RequestBody MedicalRecord newMedicalRecord) {
-		return medicalRecordService.update(newMedicalRecord);
+	public void update(@RequestBody MedicalRecord newMedicalRecord) {
+		medicalRecordService.update(newMedicalRecord);
 	}
 
 }

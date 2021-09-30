@@ -93,22 +93,13 @@ public class FirestationService {
 		return fireStationDAO.getAll();
 	}
 
-	public List<FiresStation> create(FiresStation newFiresStation) {
-
-		List<FiresStation> firesStation = getAll();
-
-		firesStation.add(newFiresStation);
+	public void create(FiresStation newFiresStation) {
 		fireStationDAO.create(newFiresStation);
 
-		return firesStation;
-
 	}
-	
-	public List<FiresStation> update(FiresStation newFiresStation){
-		List<FiresStation> firesStation = getAll();
-		firesStation.add(newFiresStation);
+
+	public void update(FiresStation newFiresStation) {
 		fireStationDAO.update(newFiresStation);
-		return firesStation;
-		
+
 	}
 }

@@ -1,7 +1,5 @@
 package com.olivtopa.safetynetalerts.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,20 +29,20 @@ public class FireStationController {
 	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 		return firestationService.findPersonsInFireStationScope(stationNumber);
 	}
-	
+
 	@PostMapping(value = "/firestation")
-	public List<FiresStation> addAStation(@RequestBody FiresStation newFiresStation) {
-		return firestationService.create(newFiresStation);
+	public void addAStation(@RequestBody FiresStation newFiresStation) {
+		firestationService.create(newFiresStation);
 	}
-	
-/*	@RequestMapping(value = "/firestation", method = RequestMethod.GET)
-	public List<FiresStation>allFiresStation(){
-		return firestationService.getAll();
-	}*/
-	
+
+	/*
+	 * @RequestMapping(value = "/firestation", method = RequestMethod.GET) public
+	 * List<FiresStation>allFiresStation(){ return firestationService.getAll(); }
+	 */
+
 	@PutMapping(value = "/firestation")
-	public List<FiresStation> update(@RequestBody FiresStation newFiresStation) {
-		return firestationService.update(newFiresStation);
+	public void update(@RequestBody FiresStation newFiresStation) {
+		firestationService.update(newFiresStation);
 	}
 
 }
