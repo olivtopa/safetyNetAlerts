@@ -42,7 +42,7 @@ class PersonServiceTest {
 		persons.add(person1);
 		persons.add(person2);
 		Person newPerson = buildPerson("Oliv", "Topa", "11 Bd truc");
-		when(personService.getAll()).thenReturn(persons);
+		when(personDAO.getAll()).thenReturn(persons);
 
 		// WHEN
 		personService.update(newPerson);

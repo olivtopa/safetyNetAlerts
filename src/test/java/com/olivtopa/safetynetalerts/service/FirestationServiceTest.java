@@ -86,4 +86,27 @@ class FirestationServiceTest {
 		return medicalRecord;
 	}
 
+	@Test
+	void updateStionTest() {
+
+		// GIVEN
+		FiresStation fireStation = new FiresStation();
+		fireStation.setStation(1);
+		fireStation.setAddress("1509 Culver St");
+
+		FiresStation fireStation1 = new FiresStation();
+		fireStation1.setStation(2);
+		fireStation1.setAddress("1509 Culver St");
+
+		FiresStation newFireStation = new FiresStation();
+		newFireStation.setStation(6);
+		newFireStation.setAddress("1509 Culver St");
+
+		// WHEN
+		/*List<FiresStation> resultat = firestationService.update(newFireStation);
+
+		org.assertj.core.api.Assertions.assertThat(resultat.get(0).getStation()).isEqualTo(6);*/
+
+	}
+
 }

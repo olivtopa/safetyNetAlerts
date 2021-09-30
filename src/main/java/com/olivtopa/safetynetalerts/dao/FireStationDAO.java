@@ -37,7 +37,6 @@ public class FireStationDAO {
 
 	public void update(FiresStation firesStation) {
 		try {
-			EntitiesLoader entitiesLoader = new EntitiesLoader();
 			Entities entities = entitiesLoader.load(File.FILENAME);
 			entities.getFirestations().removeIf(p -> p.getAddress().equals(firesStation.getAddress()));
 			entities.getFirestations().add(firesStation);

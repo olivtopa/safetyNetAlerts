@@ -15,7 +15,7 @@ import com.olivtopa.safetynetalerts.model.MedicalRecord;
 public class MedicalRecordDAO {
 
 	@Autowired
-	EntitiesLoader entitiesLoader;
+	private EntitiesLoader entitiesLoader;
 
 	public List<MedicalRecord> getAll() {
 		try {
@@ -27,7 +27,6 @@ public class MedicalRecordDAO {
 
 	public void create(MedicalRecord medicalRecord) {
 		try {
-			EntitiesLoader entitiesLoader = new EntitiesLoader();
 			Entities entities = entitiesLoader.load(File.FILENAME);
 			entities.getMedicalrecords().add(medicalRecord);
 
@@ -40,11 +39,12 @@ public class MedicalRecordDAO {
 
 	public void update(MedicalRecord medicalRecord) {
 		try {
-			EntitiesLoader entitiesLoader = new EntitiesLoader();
+
 			Entities entities = entitiesLoader.load(File.FILENAME);
 			entities.getMedicalrecords().removeIf(m -> m.getFirstName().equals(medicalRecord.getFirstName())
 					&& m.getLastName().equals(medicalRecord.getLastName()));
-
+			entities.getMedicalrecords().add(medicalRecord);
+			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 
