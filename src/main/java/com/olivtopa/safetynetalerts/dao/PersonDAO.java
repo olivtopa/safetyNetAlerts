@@ -56,9 +56,9 @@ public class PersonDAO {
 			entities.getPersons().removeIf(p -> p.getFirstName().equals(newPerson.getFirstName())
 					&& p.getLastName().equals(newPerson.getLastName()));
 			entitiesLoader.write(File.FILENAME, entities);
-		}catch (IOException e) {
+		} catch (IOException e) {
 			throw new RuntimeException(e);
-		
+
+		}
 	}
-}
 }

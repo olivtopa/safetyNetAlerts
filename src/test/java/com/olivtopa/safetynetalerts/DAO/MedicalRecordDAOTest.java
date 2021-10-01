@@ -19,7 +19,6 @@ import com.olivtopa.safetynetalerts.dao.MedicalRecordDAO;
 import com.olivtopa.safetynetalerts.model.Entities;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 
-
 @ExtendWith(MockitoExtension.class)
 public class MedicalRecordDAOTest {
 
@@ -28,7 +27,7 @@ public class MedicalRecordDAOTest {
 
 	@Mock
 	EntitiesLoader entitiesLoader;
-	
+
 	@Test
 	public void create() throws IOException {
 
@@ -38,7 +37,8 @@ public class MedicalRecordDAOTest {
 		Mockito.when(entitiesLoader.load(ArgumentMatchers.anyString())).thenReturn(entities);
 
 		// When
-		MedicalRecord medicalRecordUpdated = new MedicalRecord();;
+		MedicalRecord medicalRecordUpdated = new MedicalRecord();
+		;
 		medicalRecordUpdated.setFirstName("Oliv");
 		medicalRecordUpdated.setLastName("Topa");
 		medicalRecordUpdated.setBirthdate(LocalDate.of(2014, 5, 17));
@@ -46,7 +46,8 @@ public class MedicalRecordDAOTest {
 		medicalRecordDAO.create(medicalRecordUpdated);
 
 		// Then
-		Assertions.assertThat(entities.getMedicalrecords()).first().usingRecursiveComparison().isEqualTo(medicalRecordUpdated);
+		Assertions.assertThat(entities.getMedicalrecords()).first().usingRecursiveComparison()
+				.isEqualTo(medicalRecordUpdated);
 	}
 
 	@Test
@@ -67,12 +68,37 @@ public class MedicalRecordDAOTest {
 		medicalRecordUpdated.setFirstName(medicalRecord.getFirstName());
 		medicalRecordUpdated.setLastName(medicalRecord.getLastName());
 		medicalRecordUpdated.setBirthdate(LocalDate.of(2014, 5, 17));
-		
+
 		medicalRecordDAO.update(medicalRecordUpdated);
 
 		// Then
 		Assertions.assertThat(entities.getMedicalrecords()).first().extracting(MedicalRecord::getBirthdate)
 				.isEqualTo(medicalRecordUpdated.getBirthdate());
+	}
+
+	@Test
+	public void delete() throws IOException {
+
+		// GIVEN
+		Entities entities = new Entities();
+		MedicalRecord medicalRecord = new MedicalRecord();
+		medicalRecord.setFirstName("Oliv");
+		medicalRecord.setLastName("Topa");
+
+		List<MedicalRecord> medicalrecords = new ArrayList<>();
+		medicalrecords.add(medicalRecord);
+		entities.setMedicalrecords(medicalrecords);
+		Mockito.when(entitiesLoader.load(ArgumentMatchers.anyString())).thenReturn(entities);
+
+		// WHEN
+		MedicalRecord medicalRecordDeleted = new MedicalRecord();
+		medicalRecordDeleted.setFirstName(medicalRecord.getFirstName());
+		medicalRecordDeleted.setLastName(medicalRecord.getLastName());
+
+		medicalRecordDAO.delete(medicalRecordDeleted);
+
+		// THEN
+		Assertions.assertThat(entities.getMedicalrecords().isEmpty());
 	}
 
 }

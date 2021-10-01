@@ -50,4 +50,18 @@ public class MedicalRecordDAO {
 
 		}
 	}
+
+	public void delete(MedicalRecord medicalRecord) {
+		try {
+
+			Entities entities = entitiesLoader.load(File.FILENAME);
+			entities.getMedicalrecords().removeIf(m -> m.getFirstName().equals(medicalRecord.getFirstName())
+					&& m.getLastName().equals(medicalRecord.getLastName()));
+			entitiesLoader.write(File.FILENAME, entities);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+
+		}
+
+	}
 }
