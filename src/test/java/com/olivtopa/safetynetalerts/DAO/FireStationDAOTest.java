@@ -93,6 +93,6 @@ public class FireStationDAOTest {
 		fireStationDAO.delete(fireStationDeleted);
 		
 		//THEN
-		Assertions.assertThat(entities.getPersons().get(0)).isEqualTo(null);
+		Assertions.assertThat(entities.getFirestations()).isEmpty();
 	}
 }
