@@ -11,18 +11,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.olivtopa.safetynetalerts.model.Entities;
 
-
-
-
-
 @Service
 public class EntitiesLoader {
 
 	ObjectMapper objectMapper = new ObjectMapper();
 
-	public Entities load(String filename) throws IOException {
-
+	public EntitiesLoader() {
 		objectMapper.registerModule(new JavaTimeModule());
+	}
+
+	public Entities load(String filename) throws IOException {
 
 		return objectMapper.readValue(EntitiesLoader.class.getClassLoader().getResource(filename), Entities.class);
 
