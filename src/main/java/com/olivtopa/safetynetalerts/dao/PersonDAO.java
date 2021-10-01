@@ -49,4 +49,16 @@ public class PersonDAO {
 		}
 
 	}
+
+	public void delete(Person newPerson) {
+		try {
+			Entities entities = entitiesLoader.load(File.FILENAME);
+			entities.getPersons().removeIf(p -> p.getFirstName().equals(newPerson.getFirstName())
+					&& p.getLastName().equals(newPerson.getLastName()));
+			entitiesLoader.write(File.FILENAME, entities);
+		}catch (IOException e) {
+			throw new RuntimeException(e);
+		
+	}
+}
 }

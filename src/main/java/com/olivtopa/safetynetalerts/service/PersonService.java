@@ -28,4 +28,9 @@ public class PersonService {
 
 	}
 
+	public void delete(Person newPerson) {
+		personDAO.delete(newPerson);
+		
+	}
+
 }

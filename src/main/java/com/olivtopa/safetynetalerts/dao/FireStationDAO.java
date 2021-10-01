@@ -45,4 +45,16 @@ public class FireStationDAO {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public void delete(FiresStation fireStationDeleted) {
+		try {
+			Entities entities = entitiesLoader.load(File.FILENAME);
+			entities.getFirestations().removeIf(p -> p.getAddress()
+					.equals(fireStationDeleted.getAddress()) || (p.getStation() == (fireStationDeleted.getStation())));
+			entitiesLoader.write(File.FILENAME, entities);
+
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }
