@@ -46,11 +46,11 @@ public class FireStationDAO {
 		}
 	}
 
-	public void delete(FiresStation fireStationDeleted) {
+	public void delete(String address, Integer station) {
 		try {
 			Entities entities = entitiesLoader.load(File.FILENAME);
-			entities.getFirestations().removeIf(p -> p.getAddress().equals(fireStationDeleted.getAddress())
-					|| (p.getStation() == (fireStationDeleted.getStation())));
+			entities.getFirestations().removeIf(p -> p.getAddress().equals(address)
+					|| (p.getStation() == (station)));
 			entitiesLoader.write(File.FILENAME, entities);
 
 		} catch (IOException e) {

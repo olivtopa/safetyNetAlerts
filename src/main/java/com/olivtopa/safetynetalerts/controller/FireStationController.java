@@ -1,11 +1,13 @@
 package com.olivtopa.safetynetalerts.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.olivtopa.safetynetalerts.dao.FireStationDAO;
@@ -35,14 +37,14 @@ public class FireStationController {
 		firestationService.create(newFiresStation);
 	}
 
-	/*
-	 * @RequestMapping(value = "/firestation", method = RequestMethod.GET) public
-	 * List<FiresStation>allFiresStation(){ return firestationService.getAll(); }
-	 */
-
 	@PutMapping(value = "/firestation")
 	public void update(@RequestBody FiresStation newFiresStation) {
 		firestationService.update(newFiresStation);
 	}
 
+	@DeleteMapping(value = "/firestation")
+	  public void deletePerson(@RequestParam(required = false) String address,
+	      @RequestParam(required = false) Integer station) {
+		firestationService.delete(address, station);
+	  }
 }

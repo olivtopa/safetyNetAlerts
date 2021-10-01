@@ -93,7 +93,7 @@ class PersonDAOTest {
 		personDeleted.setFirstName(person.getFirstName());
 		personDeleted.setLastName(person.getLastName());
 		
-		personDAO.delete(personDeleted);
+		personDAO.delete("Oliv", "Topa");
 		
 		//THEN
 		Assertions.assertThat(entities.getPersons().isEmpty());

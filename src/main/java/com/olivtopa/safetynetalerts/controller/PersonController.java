@@ -39,10 +39,10 @@ public class PersonController {
 
 	}
 	
-	/*@DeleteMapping(value = "/person")
-	public void deletePerson(@RequestParam(value = (newPerson), 
-	required = true) Person newPerson {
-		personService.delete(newPerson);
-	}*/
+	@DeleteMapping(value = "/person")
+	public void deletePerson(@RequestParam String firstName, @RequestParam String lastName){
+	
+		personService.delete(firstName,lastName);
+	}
 }
 

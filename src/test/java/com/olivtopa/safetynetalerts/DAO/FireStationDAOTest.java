@@ -90,7 +90,7 @@ public class FireStationDAOTest {
 		fireStationDeleted.setAddress(fireStation.getAddress());
 		fireStationDeleted.setStation(fireStation.getStation());
 		
-		fireStationDAO.delete(fireStationDeleted);
+		fireStationDAO.delete("Address1", 8);
 		
 		//THEN
 		Assertions.assertThat(entities.getFirestations()).isEmpty();

@@ -28,8 +28,8 @@ public class PersonService {
 
 	}
 
-	public void delete(Person newPerson) {
-		personDAO.delete(newPerson);
+	public void delete(String firstName, String lastName){
+		personDAO.delete(firstName, lastName);
 		
 	}
 

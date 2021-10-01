@@ -100,6 +100,9 @@ public class FirestationService {
 
 	public void update(FiresStation newFiresStation) {
 		fireStationDAO.update(newFiresStation);
+	}
 
+	public void delete(String address, Integer station) {
+		fireStationDAO.delete(address, station);
 	}
 }

@@ -50,11 +50,11 @@ public class PersonDAO {
 
 	}
 
-	public void delete(Person newPerson) {
+	public void delete(String firstName, String lastName) {
 		try {
 			Entities entities = entitiesLoader.load(File.FILENAME);
-			entities.getPersons().removeIf(p -> p.getFirstName().equals(newPerson.getFirstName())
-					&& p.getLastName().equals(newPerson.getLastName()));
+			entities.getPersons().removeIf(p -> p.getFirstName().equals(firstName)
+					&& p.getLastName().equals(lastName));
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
