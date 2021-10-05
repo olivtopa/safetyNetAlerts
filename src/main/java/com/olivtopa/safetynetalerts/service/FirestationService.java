@@ -7,11 +7,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.dao.FireStationDAO;
 import com.olivtopa.safetynetalerts.dao.MedicalRecordDAO;
+import com.olivtopa.safetynetalerts.dao.PersonDAO;
 import com.olivtopa.safetynetalerts.model.FiresStation;
 import com.olivtopa.safetynetalerts.model.MedicalRecord;
 import com.olivtopa.safetynetalerts.model.Person;
@@ -25,6 +27,8 @@ public class FirestationService {
 	private final FireStationDAO fireStationDAO;
 	private final MedicalRecordDAO medicalRecordDAO;
 
+	private static Logger logger = LoggerFactory.getLogger(FirestationService.class);
+
 	public FirestationService(PersonDAO personDAO, FireStationDAO fireStationDAO, MedicalRecordDAO medicalRecordDAO) {
 		this.personDAO = personDAO;
 		this.fireStationDAO = fireStationDAO;
@@ -33,6 +37,7 @@ public class FirestationService {
 
 	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 
+		logger.info("Addresses based on station number {}", stationNumber);
 		Set<String> addressOfFireStations = fireStationDAO.getAll().stream()
 				.filter(firesStation -> firesStation.getStation() == stationNumber).map(FiresStation::getAddress)
 				.collect(Collectors.toSet());
@@ -41,12 +46,14 @@ public class FirestationService {
 				.filter(person -> addressOfFireStations.contains(person.getAddress()))
 
 				.collect(Collectors.toList());
-
+		logger.info("search for people living at this address : {}", addressOfFireStations);
 		return buildResult(allPersons, medicalRecordDAO.getAll());
 	}
 
 	private PersonsInFireStation buildResult(List<Person> allPersons, List<MedicalRecord> allMedicalRecords) {
 		PersonsInFireStation personsInFireStation = new PersonsInFireStation();
+		
+		
 
 		List<PersonInFireStation> persons = new ArrayList<>();
 		List<MedicalRecord> medicalRecords = new ArrayList<>();
@@ -56,6 +63,7 @@ public class FirestationService {
 							&& onePerson.getLastName().equals(medicalRecord.getLastName()))
 					.findFirst().orElseThrow();
 			medicalRecords.add(medicalRecordForPerson);
+			
 
 			PersonInFireStation personInFireStation = new PersonInFireStation();
 			personInFireStation.setFirstName(onePerson.getFirstName());
@@ -71,26 +79,27 @@ public class FirestationService {
 		personsInFireStation.setNbChildren(countChildren(medicalRecords));
 
 		personsInFireStation.setPersons(persons);
-
+		logger.info("people found : {}",(personsInFireStation.getNbAdults()+personsInFireStation.getNbChildren()));
 		return personsInFireStation;
 	}
 
 	private int countChildren(List<MedicalRecord> medicalRecords) {
-		return (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
+		
+		int nbChildren = (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
 				.filter(age -> age < 18).count();
+		logger.info("Children : {}", nbChildren);
+		return nbChildren;
 	}
 
 	private int countAdults(List<MedicalRecord> medicalRecords) {
-		return (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
+		int nbAdult = (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
 				.filter(age -> age >= 18).count();
+		logger.info("Children : {}", nbAdult);
+		return nbAdult;
 	}
 
 	private int computeAge(LocalDate localDate) {
 		return Period.between(localDate, LocalDate.now()).getYears();
-	}
-
-	public List<FiresStation> getAll() {
-		return fireStationDAO.getAll();
 	}
 
 	public void create(FiresStation newFiresStation) {
