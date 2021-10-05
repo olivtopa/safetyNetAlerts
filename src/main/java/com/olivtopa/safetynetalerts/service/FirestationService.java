@@ -79,7 +79,7 @@ public class FirestationService {
 		personsInFireStation.setNbChildren(countChildren(medicalRecords));
 
 		personsInFireStation.setPersons(persons);
-		logger.info("people found : {}",(personsInFireStation.getNbAdults()+personsInFireStation.getNbChildren()));
+		logger.info("people found for this station number : {}",(personsInFireStation.getNbAdults()+personsInFireStation.getNbChildren()));
 		return personsInFireStation;
 	}
 
@@ -87,14 +87,14 @@ public class FirestationService {
 		
 		int nbChildren = (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
 				.filter(age -> age < 18).count();
-		logger.info("Children : {}", nbChildren);
+		logger.info("Number of children int this station : {}", nbChildren);
 		return nbChildren;
 	}
 
 	private int countAdults(List<MedicalRecord> medicalRecords) {
 		int nbAdult = (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
 				.filter(age -> age >= 18).count();
-		logger.info("Children : {}", nbAdult);
+		logger.info("Number of adult in this station : {}", nbAdult);
 		return nbAdult;
 	}
 
