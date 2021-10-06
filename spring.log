@@ -103,3 +103,55 @@
 2021-10-06 11:11:53.986  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
 2021-10-06 11:11:54.013  INFO 9740 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.927 seconds (JVM running for 3.877)
 2021-10-06 11:12:02.722  INFO 9740 --- [http-nio-20000-exec-2] c.o.s.service.FloodService               : search for firestation number : [[1, 2]]
+2021-10-06 14:03:15.755  INFO 15876 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 15876 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 14:03:15.760  INFO 15876 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 14:03:17.133  INFO 15876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 14:03:18.192  INFO 15876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 14:03:18.215  INFO 15876 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.047 seconds (JVM running for 4.088)
+2021-10-06 14:07:14.488  INFO 15876 --- [http-nio-20000-exec-3] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:07:14.515  INFO 15876 --- [http-nio-20000-exec-3] c.o.s.controller.EntitiesLoader          : Mise a jour de com.olivtopa.safetynetalerts.model.Entities@5d75810c 
+2021-10-06 14:09:57.502  INFO 16189 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 16189 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 14:09:57.506  INFO 16189 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 14:09:59.067  INFO 16189 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 14:10:00.101  INFO 16189 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 14:10:00.124  INFO 16189 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.181 seconds (JVM running for 4.074)
+2021-10-06 14:10:22.703  INFO 16189 --- [http-nio-20000-exec-2] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:10:22.732  INFO 16189 --- [http-nio-20000-exec-2] c.o.s.controller.EntitiesLoader          : Mise a jour de persons, firestations ou medicalrecords
+2021-10-06 14:18:10.133  INFO 16518 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 16518 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 14:18:10.136  INFO 16518 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 14:18:11.536  INFO 16518 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 14:18:12.541  INFO 16518 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 14:18:12.573  INFO 16518 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.955 seconds (JVM running for 3.857)
+2021-10-06 14:20:08.263  INFO 16518 --- [http-nio-20000-exec-1] c.o.s.controller.PersonController        : PUT request for modify persons
+2021-10-06 14:20:08.264  INFO 16518 --- [http-nio-20000-exec-1] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:20:08.287  INFO 16518 --- [http-nio-20000-exec-1] c.o.s.controller.EntitiesLoader          : Mise a jour de data.json 
+2021-10-06 14:42:27.628  INFO 17435 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 17435 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 14:42:27.631  INFO 17435 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 14:42:29.046  INFO 17435 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 14:42:30.033  INFO 17435 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 14:42:30.055  INFO 17435 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.979 seconds (JVM running for 3.969)
+2021-10-06 14:42:34.399  INFO 17435 --- [http-nio-20000-exec-2] c.o.s.controller.PersonInfoController    : GET request for information on John, Boyd 
+2021-10-06 14:42:34.402  INFO 17435 --- [http-nio-20000-exec-2] c.o.s.service.PersonInfoService          : contact details of John, Boyd 
+2021-10-06 14:42:34.402  INFO 17435 --- [http-nio-20000-exec-2] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:42:34.477  INFO 17435 --- [http-nio-20000-exec-2] c.o.s.service.PersonInfoService          : Medical Record of John, Boyd 
+2021-10-06 14:42:34.478  INFO 17435 --- [http-nio-20000-exec-2] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:48:08.256  INFO 17684 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 17684 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 14:48:08.261  INFO 17684 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 14:48:09.731  INFO 17684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 14:48:10.765  INFO 17684 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 14:48:10.787  INFO 17684 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.104 seconds (JVM running for 3.987)
+2021-10-06 14:48:44.821  INFO 17684 --- [http-nio-20000-exec-1] c.o.s.controller.PhoneAlertController    : GET request for phone numbers of people on firestation 3 
+2021-10-06 14:48:44.823  INFO 17684 --- [http-nio-20000-exec-1] c.o.s.service.PhoneAlertService          : Address for firestation number 3 
+2021-10-06 14:48:44.824  INFO 17684 --- [http-nio-20000-exec-1] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:48:44.872  INFO 17684 --- [http-nio-20000-exec-1] c.o.s.service.PhoneAlertService          : searches for phone numbers by addresses
+2021-10-06 14:48:44.873  INFO 17684 --- [http-nio-20000-exec-1] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:50:09.301  INFO 17846 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 17846 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 14:50:09.306  INFO 17846 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 14:50:10.687  INFO 17846 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 14:50:11.766  INFO 17846 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 14:50:11.788  INFO 17846 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.071 seconds (JVM running for 3.981)
+2021-10-06 14:50:16.915  INFO 17846 --- [http-nio-20000-exec-1] c.o.s.controller.PhoneAlertController    : GET request for phone numbers of people on firestation 3 
+2021-10-06 14:50:16.917  INFO 17846 --- [http-nio-20000-exec-1] c.o.s.service.PhoneAlertService          : searches for address for firestation number 3 
+2021-10-06 14:50:16.918  INFO 17846 --- [http-nio-20000-exec-1] c.o.s.controller.EntitiesLoader          : chargement de data.json 
+2021-10-06 14:50:16.985  INFO 17846 --- [http-nio-20000-exec-1] c.o.s.service.PhoneAlertService          : searches for phone numbers by addresses
+2021-10-06 14:50:16.985  INFO 17846 --- [http-nio-20000-exec-1] c.o.s.controller.EntitiesLoader          : chargement de data.json 
