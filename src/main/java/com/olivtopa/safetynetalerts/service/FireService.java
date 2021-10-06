@@ -5,6 +5,9 @@ import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +30,8 @@ public class FireService {
 	private PersonDAO personDAO;
 
 	FiresStation firesStation;
+
+	private static Logger logger = LoggerFactory.getLogger(FireService.class);
 
 	private Fire buildFire(Person person, FiresStation firesStation, MedicalRecord medicalRecord) {
 
@@ -53,6 +58,7 @@ public class FireService {
 
 	public List<Fire> inhabitantByAddress(String address) {
 
+		logger.info("search for people living at this address : {}", address);
 		List<Fire> fire = personDAO
 				.getAll().stream().filter(a -> a.getAddress().equals(address)).map(person -> buildFire(person,
 						findFireStation(address), findMedicalRecord(person.getFirstName(), person.getLastName())))
@@ -65,10 +71,13 @@ public class FireService {
 
 		FiresStation stations = fireStationDAO.getAll().stream()
 				.filter(fireStation -> fireStation.getAddress().equals(address)).distinct().findAny().orElse(null);
+		
 		return stations;
 	}
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
+
+		
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
 				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
 				.distinct().findAny().orElse(null);

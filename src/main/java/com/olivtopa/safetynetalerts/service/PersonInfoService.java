@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ public class PersonInfoService {
 	private PersonDAO personDAO;
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
+	
+	private static Logger logger = LoggerFactory.getLogger(PersonInfoService.class);
 
 	private PersonInfo buildPersonInfo(Person person, MedicalRecord medicalRecord) {
 
@@ -47,6 +51,7 @@ public class PersonInfoService {
 
 	public List<PersonInfo> personDetails(String firstName, String lastName) {
 
+		logger.info("contact details of {}, {} " ,firstName,  lastName);
 		List<PersonInfo> personInfo = personDAO.getAll().stream()
 				.filter(p -> p.getFirstName().equals(firstName) && p.getLastName().equals(lastName))
 				.map(person -> buildPersonInfo(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
@@ -56,6 +61,7 @@ public class PersonInfoService {
 	}
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
+		logger.info("Medical Record of {}, {} " ,firstName,  lastName);
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
 				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
 				.findAny().orElse(null);

@@ -1,0 +1,105 @@
+2021-10-06 09:33:07.968  INFO 3416 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 3416 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 09:33:07.974  INFO 3416 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 09:33:09.783  INFO 3416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 09:33:10.951  INFO 3416 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 09:33:10.983  INFO 3416 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.783 seconds (JVM running for 5.055)
+2021-10-06 09:35:48.819  INFO 3416 --- [http-nio-20000-exec-1] c.o.s.service.FirestationService         : Addresses based on station number 3
+2021-10-06 09:35:48.873  INFO 3416 --- [http-nio-20000-exec-1] c.o.s.service.FirestationService         : search for people living at this address : [748 Townings Dr, 1509 Culver St, 834 Binoc Ave, 112 Steppes Pl]
+2021-10-06 09:35:48.887  INFO 3416 --- [http-nio-20000-exec-1] c.o.s.service.FirestationService         : Number of adult in this station : 8
+2021-10-06 09:35:48.888  INFO 3416 --- [http-nio-20000-exec-1] c.o.s.service.FirestationService         : Number of children int this station : 3
+2021-10-06 09:35:48.888  INFO 3416 --- [http-nio-20000-exec-1] c.o.s.service.FirestationService         : people found for this station number : 11
+2021-10-06 09:48:32.889  INFO 5229 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 5229 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 09:48:32.892  INFO 5229 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 09:48:34.336  INFO 5229 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 09:48:35.283  INFO 5229 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 09:48:35.303  INFO 5229 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.961 seconds (JVM running for 4.06)
+2021-10-06 09:48:43.309  INFO 5229 --- [http-nio-20000-exec-1] c.o.s.service.CommunityEmailsService     : emails from all residents of: Culver 
+2021-10-06 09:59:29.257  INFO 5797 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 5797 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 09:59:29.260  INFO 5797 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 09:59:30.721  INFO 5797 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 09:59:31.611  INFO 5797 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 09:59:31.635  INFO 5797 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.934 seconds (JVM running for 3.869)
+2021-10-06 10:00:05.952  INFO 5797 --- [http-nio-20000-exec-1] c.o.s.service.PersonInfoService          : contact details of John, Boyd 
+2021-10-06 10:00:06.004  INFO 5797 --- [http-nio-20000-exec-1] c.o.s.service.PersonInfoService          : Medical Record of John, Boyd 
+2021-10-06 10:13:08.334  INFO 6338 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 6338 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:13:08.339  INFO 6338 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:13:09.834  INFO 6338 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:13:10.826  INFO 6338 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:13:10.846  INFO 6338 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.069 seconds (JVM running for 3.97)
+2021-10-06 10:13:20.864  INFO 6338 --- [http-nio-20000-exec-2] c.o.s.service.PhoneAlertService          : Address for firestation number 2 
+2021-10-06 10:13:20.914  INFO 6338 --- [http-nio-20000-exec-2] c.o.s.service.PhoneAlertService          : searches for phone numbers by addresses
+2021-10-06 10:18:31.683  INFO 6663 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 6663 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:18:31.687  INFO 6663 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:18:33.082  INFO 6663 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:18:34.114  INFO 6663 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:18:34.135  INFO 6663 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.044 seconds (JVM running for 3.945)
+2021-10-06 10:20:38.108  INFO 6663 --- [http-nio-20000-exec-1] c.o.safetynetalerts.service.FireService  : search for people living at this address : 509 Culver St
+2021-10-06 10:24:03.991  INFO 6663 --- [http-nio-20000-exec-5] c.o.safetynetalerts.service.FireService  : search for people living at this address : 1509 Culver St
+2021-10-06 10:25:36.191  INFO 7020 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 7020 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:25:36.195  INFO 7020 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:25:37.703  INFO 7020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:25:38.707  INFO 7020 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:25:38.738  INFO 7020 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.127 seconds (JVM running for 4.112)
+2021-10-06 10:34:04.989  INFO 7410 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 7410 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:34:04.992  INFO 7410 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:34:06.397  INFO 7410 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:34:07.358  INFO 7410 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:34:07.381  INFO 7410 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.968 seconds (JVM running for 3.904)
+2021-10-06 10:36:14.454  INFO 7410 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:36:14.455  INFO 7410 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:36:14.532  INFO 7410 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:36:14.543  INFO 7410 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:38:10.376  INFO 7680 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 7680 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:38:10.379  INFO 7680 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:38:11.778  INFO 7680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:38:12.736  INFO 7680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:38:12.759  INFO 7680 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.931 seconds (JVM running for 3.825)
+2021-10-06 10:38:20.181  INFO 7680 --- [http-nio-20000-exec-2] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:38:20.183  INFO 7680 --- [http-nio-20000-exec-2] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:38:20.193  INFO 7680 --- [http-nio-20000-exec-2] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:38:20.193  INFO 7680 --- [http-nio-20000-exec-2] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:40:51.214  INFO 7814 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 7814 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:40:51.218  INFO 7814 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:40:52.621  INFO 7814 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:40:53.533  INFO 7814 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:40:53.558  INFO 7814 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.867 seconds (JVM running for 3.761)
+2021-10-06 10:40:57.205  INFO 7814 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:40:57.215  INFO 7814 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:40:57.217  INFO 7814 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:40:57.228  INFO 7814 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:47:54.119  INFO 8019 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 8019 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:47:54.123  INFO 8019 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:47:55.490  INFO 8019 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:47:56.399  INFO 8019 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:47:56.419  INFO 8019 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.798 seconds (JVM running for 3.759)
+2021-10-06 10:48:01.247  INFO 8019 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:48:01.261  INFO 8019 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:48:01.269  INFO 8019 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:48:01.270  INFO 8019 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:50:21.981  INFO 8140 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 8140 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:50:21.985  INFO 8140 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:50:23.417  INFO 8140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:50:24.362  INFO 8140 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:50:24.382  INFO 8140 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.949 seconds (JVM running for 3.91)
+2021-10-06 10:50:28.507  INFO 8140 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:50:28.607  INFO 8140 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:50:28.622  INFO 8140 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:50:28.630  INFO 8140 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:51:27.869  INFO 8233 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 8233 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:51:27.874  INFO 8233 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:51:29.363  INFO 8233 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:51:30.279  INFO 8233 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:51:30.304  INFO 8233 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.931 seconds (JVM running for 3.833)
+2021-10-06 10:51:33.694  INFO 8233 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for children living in 1509 Culver St 
+2021-10-06 10:51:33.697  INFO 8233 --- [http-nio-20000-exec-1] c.o.s.service.ChildAlertService          : searches for people living in: 1509 Culver St
+2021-10-06 10:56:46.282  INFO 8443 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 8443 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 10:56:46.286  INFO 8443 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 10:56:47.666  INFO 8443 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 10:56:48.715  INFO 8443 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 10:56:48.736  INFO 8443 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 3.024 seconds (JVM running for 4.04)
+2021-10-06 11:11:51.644  INFO 9740 --- [main] c.o.s.SafetyNetAlertsApplication         : Starting SafetyNetAlertsApplication using Java 16.0.1 on ordidOliv with PID 9740 (/home/oliv/Documents/openclassrooms/P5/safetynetalerts/target/classes started by oliv in /home/oliv/Documents/openclassrooms/P5/safetynetalerts)
+2021-10-06 11:11:51.648  INFO 9740 --- [main] c.o.s.SafetyNetAlertsApplication         : No active profile set, falling back to default profiles: default
+2021-10-06 11:11:53.029  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 20000 (http)
+2021-10-06 11:11:53.986  INFO 9740 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 20000 (http) with context path ''
+2021-10-06 11:11:54.013  INFO 9740 --- [main] c.o.s.SafetyNetAlertsApplication         : Started SafetyNetAlertsApplication in 2.927 seconds (JVM running for 3.877)
+2021-10-06 11:12:02.722  INFO 9740 --- [http-nio-20000-exec-2] c.o.s.service.FloodService               : search for firestation number : [[1, 2]]

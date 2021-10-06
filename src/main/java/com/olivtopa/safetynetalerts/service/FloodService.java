@@ -6,6 +6,8 @@ import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,8 @@ public class FloodService {
 
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
+	
+	private static Logger logger = LoggerFactory.getLogger(FloodService.class);
 
 	private FloodAddress buildFloodAddress(List<FloodPerson> person, String fireStationAddresses) {
 
@@ -64,7 +68,9 @@ public class FloodService {
 	}
 
 	public List<FloodAddress> finalFloodList(List<Integer> stations) {
-
+		
+		
+logger.info("search for firestation number : {}", List.of(stations));
 		   return stations.stream()
 		       .flatMap(station -> addressByFireStationNumber(station).stream()) 
 		       .map(address -> buildFloodAddress(floodPersonListByAddress(address), address))

@@ -5,6 +5,8 @@ import java.time.Period;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +22,12 @@ public class ChildAlertService {
 
 	@Autowired
 	private PersonDAO personDAO;
-	
+
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
-	
-	
+
+	private static Logger logger = LoggerFactory.getLogger(ChildAlertService.class);
+
 	private PersonList buildPersonList(Person person, MedicalRecord medicalRecord) {
 
 		PersonList personList = new PersonList();
@@ -41,12 +44,11 @@ public class ChildAlertService {
 		age = calculateAge(birthdate, currentdate);
 
 		personList.setAge(age);
-		
 
 		return personList;
 
 	}
-	
+
 	private ChildrenList buildChildrenList(PersonList person, MedicalRecord medicalRecord, String address) {
 
 		ChildrenList childrenList = new ChildrenList();
@@ -57,18 +59,17 @@ public class ChildAlertService {
 		childrenList.setPhone(person.getPhone());
 		childrenList.setAge(person.getAge());
 		childrenList.setPersonList(personListByAddress(address));
-		//childrenList.setPersonList(personListByAddress(address).stream().filter(p -> p.getAge() >= 18).collect(Collectors.toList()));
 
 		return childrenList;
 
 	}
-	
-	
 
 	public List<PersonList> personListByAddress(String address) {
-		List<PersonList> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address)).map(
-				person -> buildPersonList(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
+
+		List<PersonList> foyer = personDAO.getAll().stream().filter(a -> a.getAddress().equals(address))
+				.map(person -> buildPersonList(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
+
 		return foyer;
 	}
 
@@ -78,15 +79,17 @@ public class ChildAlertService {
 				.distinct().findAny().orElseThrow();
 		return medical;
 	}
-	
-	public List<ChildrenList> childrenList(String address){
-		
-		List<ChildrenList> children = personListByAddress(address).stream().filter(a -> a.getAge() <= 18)
-				.map(person -> buildChildrenList(person, findMedicalRecord(person.getFirstName(), person.getLastName()),address))
+
+	public List<ChildrenList> childrenList(String address) {
+
+		List<ChildrenList> children = personListByAddress(address)
+				.stream().filter(a -> a.getAge() <= 18).map(person -> buildChildrenList(person,
+						findMedicalRecord(person.getFirstName(), person.getLastName()), address))
 				.collect(Collectors.toList());
+		logger.info("searches for children living in {} ", address);
+		logger.info("searches for people living in: {}", address);
 		return children;
-		
-		
+
 	}
 
 	public int calculateAge(LocalDate birthdate, LocalDate currentDate) {
