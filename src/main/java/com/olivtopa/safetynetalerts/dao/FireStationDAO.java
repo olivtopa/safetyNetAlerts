@@ -4,6 +4,9 @@ import com.olivtopa.safetynetalerts.constant.File;
 import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
 import com.olivtopa.safetynetalerts.model.Entities;
 import com.olivtopa.safetynetalerts.model.FiresStation;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +18,8 @@ public class FireStationDAO {
 
 	@Autowired
 	EntitiesLoader entitiesLoader;
+	
+	private static Logger logger = LoggerFactory.getLogger(FireStationDAO.class);
 
 	public List<FiresStation> getAll() {
 		try {
@@ -30,6 +35,7 @@ public class FireStationDAO {
 			entities.getFirestations().add(firesStation);
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while creating a fire station");
 			throw new RuntimeException(e);
 		}
 
@@ -42,6 +48,7 @@ public class FireStationDAO {
 			entities.getFirestations().add(firesStation);
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while updating a fire station");
 			throw new RuntimeException(e);
 		}
 	}
@@ -54,6 +61,7 @@ public class FireStationDAO {
 			entitiesLoader.write(File.FILENAME, entities);
 
 		} catch (IOException e) {
+			logger.error("A problem occurred while deleting a fire station");
 			throw new RuntimeException(e);
 		}
 	}

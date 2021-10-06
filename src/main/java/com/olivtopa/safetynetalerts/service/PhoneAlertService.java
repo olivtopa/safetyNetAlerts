@@ -26,7 +26,7 @@ public class PhoneAlertService {
 
 	public List<String> findPhoneNumberByFireStationNumber(int fireStationNumber) {
 		
-		logger.info("Address for firestation number {} ", fireStationNumber);
+		logger.info("searches for address for firestation number {} ", fireStationNumber);
 
 		List<String> fireStationAddresses = fireStationDAO.getAll().stream()
 				.filter(s -> s.getStation() == (fireStationNumber)).map(FiresStation::getAddress)

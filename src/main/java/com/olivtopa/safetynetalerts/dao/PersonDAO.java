@@ -3,6 +3,8 @@ package com.olivtopa.safetynetalerts.dao;
 import java.io.IOException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,12 +13,16 @@ import com.olivtopa.safetynetalerts.controller.EntitiesLoader;
 import com.olivtopa.safetynetalerts.model.Entities;
 import com.olivtopa.safetynetalerts.model.Person;
 
+
+
 @Repository
 public class PersonDAO {
 
 	@Autowired
 	private EntitiesLoader entitiesLoader;
 
+	private static Logger logger = LoggerFactory.getLogger(PersonDAO.class);
+	
 	public List<Person> getAll() {
 		try {
 			return entitiesLoader.load(File.FILENAME).getPersons();
@@ -32,6 +38,7 @@ public class PersonDAO {
 
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while creating a person");
 			throw new RuntimeException(e);
 		}
 
@@ -45,6 +52,7 @@ public class PersonDAO {
 			entities.getPersons().add(newPerson);
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while modify a person");
 			throw new RuntimeException(e);
 		}
 
@@ -57,6 +65,7 @@ public class PersonDAO {
 					&& p.getLastName().equals(lastName));
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while deleting a person");
 			throw new RuntimeException(e);
 
 		}

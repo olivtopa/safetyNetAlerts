@@ -3,6 +3,8 @@ package com.olivtopa.safetynetalerts.dao;
 import java.io.IOException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,8 @@ public class MedicalRecordDAO {
 
 	@Autowired
 	private EntitiesLoader entitiesLoader;
+	
+	private static Logger logger = LoggerFactory.getLogger(MedicalRecordDAO.class);
 
 	public List<MedicalRecord> getAll() {
 		try {
@@ -32,6 +36,7 @@ public class MedicalRecordDAO {
 
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while creating a medical record");
 			throw new RuntimeException(e);
 		}
 
@@ -46,6 +51,7 @@ public class MedicalRecordDAO {
 			entities.getMedicalrecords().add(medicalRecord);
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while updating a medical record");
 			throw new RuntimeException(e);
 
 		}
@@ -59,6 +65,7 @@ public class MedicalRecordDAO {
 					&& m.getLastName().equals(medicalRecord.getLastName()));
 			entitiesLoader.write(File.FILENAME, entities);
 		} catch (IOException e) {
+			logger.error("A problem occurred while deleting a medical record");
 			throw new RuntimeException(e);
 
 		}
