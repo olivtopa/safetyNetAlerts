@@ -21,7 +21,7 @@ public class CommunityEmailsService {
 
 		List<String> emails = personService.getAll().stream().filter(c -> c.getCity().equals(city))
 				.map(Person::getEmail).collect(Collectors.toList());
-		logger.info("emails from all residents of: {} ", List.of(emails));
+		logger.info("emails from all residents of {} : {} ", city,List.of(emails));
 		return emails;
 	}
 }

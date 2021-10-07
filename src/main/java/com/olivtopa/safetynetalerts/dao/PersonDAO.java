@@ -52,7 +52,7 @@ public class PersonDAO {
 					&& p.getLastName().equals(newPerson.getLastName()));
 			entities.getPersons().add(newPerson);
 			entitiesLoader.write(File.FILENAME, entities);
-			logger.info("{} {} is correctly modified in the Person list",newPerson.getFirstName(),newPerson.getLastName());
+			logger.info("person list is correctly modified : {}" ,newPerson.toString());
 		} catch (IOException e) {
 			logger.error("A problem occurred while modify a person",e);
 			throw new RuntimeException(e);

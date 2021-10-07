@@ -48,7 +48,7 @@ public class FireStationDAO {
 			entities.getFirestations().removeIf(p -> p.getAddress().equals(firesStation.getAddress()));
 			entities.getFirestations().add(firesStation);
 			entitiesLoader.write(File.FILENAME, entities);
-			logger.info("{} is correctly modified on fire station list" ,firesStation.getAddress());
+			logger.info("firestation list is correctly modified : {}" ,firesStation.toString());
 		} catch (IOException e) {
 			logger.error("A problem occurred while updating a fire station",e);
 			throw new RuntimeException(e);
@@ -61,7 +61,7 @@ public class FireStationDAO {
 			entities.getFirestations().removeIf(p -> p.getAddress().equals(address)
 					|| (p.getStation() == (station)));
 			entitiesLoader.write(File.FILENAME, entities);
-			logger.info("{} {} is correctly deleted on fire station list" ,address,station);
+			logger.info("firestation {}, {} is correctly deleted" ,address, station);
 		} catch (IOException e) {
 			logger.error("A problem occurred while deleting a fire station",e);
 			throw new RuntimeException(e);

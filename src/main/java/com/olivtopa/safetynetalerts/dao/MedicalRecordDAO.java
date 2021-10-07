@@ -52,8 +52,7 @@ public class MedicalRecordDAO {
 					&& m.getLastName().equals(medicalRecord.getLastName()));
 			entities.getMedicalrecords().add(medicalRecord);
 			entitiesLoader.write(File.FILENAME, entities);
-			logger.info("{} {} is correctly modified on medical record list",
-					medicalRecord.getFirstName(),(medicalRecord.getLastName()));
+			logger.info("Medical Record list is correctly modified : {}" ,medicalRecord.toString());
 		} catch (IOException e) {
 			logger.error("A problem occurred while updating a medical record",e);
 			throw new RuntimeException(e);
@@ -68,8 +67,7 @@ public class MedicalRecordDAO {
 			entities.getMedicalrecords().removeIf(m -> m.getFirstName().equals(medicalRecord.getFirstName())
 					&& m.getLastName().equals(medicalRecord.getLastName()));
 			entitiesLoader.write(File.FILENAME, entities);
-			logger.info("{} {} is correctly deleted on medical record list",
-					medicalRecord.getFirstName(),(medicalRecord.getLastName()));
+			logger.info("Medical Record {} is correctly deleted : " ,medicalRecord.toString());
 		} catch (IOException e) {
 			logger.error("A problem occurred while deleting a medical record");
 			throw new RuntimeException(e);
