@@ -22,7 +22,7 @@ public class PersonInfoService {
 	private PersonDAO personDAO;
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
-	
+
 	private static Logger logger = LoggerFactory.getLogger(PersonInfoService.class);
 
 	private PersonInfo buildPersonInfo(Person person, MedicalRecord medicalRecord) {
@@ -51,17 +51,17 @@ public class PersonInfoService {
 
 	public List<PersonInfo> personDetails(String firstName, String lastName) {
 
-		logger.info("contact details of {}, {} " ,firstName,  lastName);
 		List<PersonInfo> personInfo = personDAO.getAll().stream()
 				.filter(p -> p.getFirstName().equals(firstName) && p.getLastName().equals(lastName))
 				.map(person -> buildPersonInfo(person, findMedicalRecord(person.getFirstName(), person.getLastName())))
 				.collect(Collectors.toList());
+		logger.info("contact details of {} ", personInfo.toString());
 		return personInfo;
 
 	}
 
 	private MedicalRecord findMedicalRecord(String firstName, String lastName) {
-		logger.info("Medical Record of {}, {} " ,firstName,  lastName);
+
 		MedicalRecord medical = medicalRecordDAO.getAll().stream()
 				.filter(person -> person.getFirstName().equals(firstName) && person.getLastName().equals(lastName))
 				.findAny().orElse(null);

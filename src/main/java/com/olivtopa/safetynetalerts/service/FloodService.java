@@ -31,7 +31,7 @@ public class FloodService {
 
 	@Autowired
 	private MedicalRecordDAO medicalRecordDAO;
-	
+
 	private static Logger logger = LoggerFactory.getLogger(FloodService.class);
 
 	private FloodAddress buildFloodAddress(List<FloodPerson> person, String fireStationAddresses) {
@@ -68,23 +68,22 @@ public class FloodService {
 	}
 
 	public List<FloodAddress> finalFloodList(List<Integer> stations) {
-		
-		
-logger.info("search for firestation number : {}", List.of(stations));
-		   return stations.stream()
-		       .flatMap(station -> addressByFireStationNumber(station).stream()) 
-		       .map(address -> buildFloodAddress(floodPersonListByAddress(address), address))
-		       .collect(Collectors.toList());
-		}
+
+		List<FloodAddress> finalFloodlist = stations.stream()
+				.flatMap(station -> addressByFireStationNumber(station).stream())
+				.map(address -> buildFloodAddress(floodPersonListByAddress(address), address))
+				.collect(Collectors.toList());
+		logger.info("List of foyer fot this fire station number : {}", List.of(finalFloodlist));
+		return finalFloodlist;
+	}
 
 	public List<String> addressByFireStationNumber(int fireStationNumber) {
 
-		 List<String> fireStationAddresses = fireStationDAO.getAll().stream().filter(s -> s.getStation() == fireStationNumber)
-		   .map(FiresStation::getAddress).collect(Collectors.toList());
-		   return fireStationAddresses;
-		}
-
-	
+		List<String> fireStationAddresses = fireStationDAO.getAll().stream()
+				.filter(s -> s.getStation() == fireStationNumber).map(FiresStation::getAddress)
+				.collect(Collectors.toList());
+		return fireStationAddresses;
+	}
 
 	public List<FloodPerson> floodPersonListByAddress(String fireStationAddresses) {
 		List<FloodPerson> floodPerson = personDAO.getAll().stream()

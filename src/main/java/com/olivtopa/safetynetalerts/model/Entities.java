@@ -31,4 +31,10 @@ public class Entities {
 		Medicalrecords = medicalrecords;
 	}
 
+	@Override
+	public String toString() {
+		return "Entities [Persons=" + Persons + ", Firestations=" + Firestations + ", Medicalrecords=" + Medicalrecords
+				+ "]";
+	}
+
 }

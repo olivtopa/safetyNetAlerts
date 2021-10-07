@@ -96,4 +96,11 @@ public class Fire {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Fire [firesStation=" + firesStation + ", person=" + person + ", medicalRecord=" + medicalRecord
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", station=" + station + ", medications="
+				+ medications + ", allergies=" + allergies + ", age=" + age + ", Phone=" + Phone + "]";
+	}
+
 }

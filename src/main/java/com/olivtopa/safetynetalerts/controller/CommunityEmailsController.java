@@ -19,7 +19,7 @@ public class CommunityEmailsController {
 
 	@RequestMapping(value = "/communityEmail", method = RequestMethod.GET)
 	public List<String> getCommunityEmails(String city) {
-		logger.info("GET request for emails by city");
+		logger.info("GET emails request for {} ",city);
 		return communityEmailsService.getEmails(city);
 
 	}

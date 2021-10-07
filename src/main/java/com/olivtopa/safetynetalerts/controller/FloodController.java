@@ -27,7 +27,7 @@ public class FloodController {
 
 	@RequestMapping(value = "/flood/stations", method = RequestMethod.GET)
 	public List<FloodAddress> floodListOfFoyer(@RequestParam("stations") List<Integer> stations) {
-		logger.info("GET request for list of homes served by the fire station" );
+		logger.info("GET request for list of homes served by the fire station {}", List.of(stations) );
 		return floodService.finalFloodList(stations);
 	}
 

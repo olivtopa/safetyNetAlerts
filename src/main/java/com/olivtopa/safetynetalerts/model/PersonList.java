@@ -48,4 +48,10 @@ public class PersonList {
 		this.phone = phone;
 	}
 
+	@Override
+	public String toString() {
+		return "PersonList [firstName=" + firstName + ", lastName=" + lastName + ", Address=" + Address + ", phone="
+				+ phone + ", age=" + age + "]";
+	}
+
 }

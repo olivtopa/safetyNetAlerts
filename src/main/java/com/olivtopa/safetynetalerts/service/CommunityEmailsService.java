@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-
 import com.olivtopa.safetynetalerts.model.Person;
 
 @Service
@@ -20,9 +18,10 @@ public class CommunityEmailsService {
 	private PersonService personService;
 
 	public List<String> getEmails(String city) {
-		logger.info("emails from all residents of: {} ",city);
+
 		List<String> emails = personService.getAll().stream().filter(c -> c.getCity().equals(city))
 				.map(Person::getEmail).collect(Collectors.toList());
+		logger.info("emails from all residents of: {} ", List.of(emails));
 		return emails;
 	}
 }

@@ -4,6 +4,12 @@ import java.util.List;
 
 public class ChildrenList {
 
+	@Override
+	public String toString() {
+		return "ChildrenList [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", phone="
+				+ phone + ", age=" + age + ", personList=" + personList + "]";
+	}
+
 	private String firstName;
 	private String lastName;
 	private String address;

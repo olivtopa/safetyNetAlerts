@@ -53,6 +53,11 @@ public class FloodPerson {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	@Override
+	public String toString() {
+		return "FloodPerson [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", phone="
+				+ phone + ", medications=" + medications + ", allergies=" + allergies + ", age=" + age + "]";
+	}
 	
 
 }

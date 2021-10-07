@@ -34,8 +34,9 @@ public class FireStationDAO {
 			Entities entities = entitiesLoader.load(File.FILENAME);
 			entities.getFirestations().add(firesStation);
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} is correctly added on fire station list" ,firesStation.toString());
 		} catch (IOException e) {
-			logger.error("A problem occurred while creating a fire station");
+			logger.error("A problem occurred while creating a fire station",e);
 			throw new RuntimeException(e);
 		}
 
@@ -47,8 +48,9 @@ public class FireStationDAO {
 			entities.getFirestations().removeIf(p -> p.getAddress().equals(firesStation.getAddress()));
 			entities.getFirestations().add(firesStation);
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} is correctly modified on fire station list" ,firesStation.getAddress());
 		} catch (IOException e) {
-			logger.error("A problem occurred while updating a fire station");
+			logger.error("A problem occurred while updating a fire station",e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -59,9 +61,9 @@ public class FireStationDAO {
 			entities.getFirestations().removeIf(p -> p.getAddress().equals(address)
 					|| (p.getStation() == (station)));
 			entitiesLoader.write(File.FILENAME, entities);
-
+			logger.info("{} {} is correctly deleted on fire station list" ,address,station);
 		} catch (IOException e) {
-			logger.error("A problem occurred while deleting a fire station");
+			logger.error("A problem occurred while deleting a fire station",e);
 			throw new RuntimeException(e);
 		}
 	}

@@ -25,6 +25,7 @@ public class MedicalRecordDAO {
 		try {
 			return entitiesLoader.load(File.FILENAME).getMedicalrecords();
 		} catch (IOException e) {
+			logger.error("A problem occurred while creating a medical record",e);
 			throw new RuntimeException(e);
 		}
 	}
@@ -35,8 +36,9 @@ public class MedicalRecordDAO {
 			entities.getMedicalrecords().add(medicalRecord);
 
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} is correctly added on medical record list",medicalRecord.toString());
 		} catch (IOException e) {
-			logger.error("A problem occurred while creating a medical record");
+			logger.error("A problem occurred while creating a medical record",e);
 			throw new RuntimeException(e);
 		}
 
@@ -50,8 +52,10 @@ public class MedicalRecordDAO {
 					&& m.getLastName().equals(medicalRecord.getLastName()));
 			entities.getMedicalrecords().add(medicalRecord);
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} {} is correctly modified on medical record list",
+					medicalRecord.getFirstName(),(medicalRecord.getLastName()));
 		} catch (IOException e) {
-			logger.error("A problem occurred while updating a medical record");
+			logger.error("A problem occurred while updating a medical record",e);
 			throw new RuntimeException(e);
 
 		}
@@ -64,6 +68,8 @@ public class MedicalRecordDAO {
 			entities.getMedicalrecords().removeIf(m -> m.getFirstName().equals(medicalRecord.getFirstName())
 					&& m.getLastName().equals(medicalRecord.getLastName()));
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} {} is correctly deleted on medical record list",
+					medicalRecord.getFirstName(),(medicalRecord.getLastName()));
 		} catch (IOException e) {
 			logger.error("A problem occurred while deleting a medical record");
 			throw new RuntimeException(e);

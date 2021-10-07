@@ -37,8 +37,9 @@ public class PersonDAO {
 			entities.getPersons().add(person);
 
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} is correctly added to the Person list",person.toString());
 		} catch (IOException e) {
-			logger.error("A problem occurred while creating a person");
+			logger.error("A problem occurred while creating a person",e);
 			throw new RuntimeException(e);
 		}
 
@@ -51,8 +52,9 @@ public class PersonDAO {
 					&& p.getLastName().equals(newPerson.getLastName()));
 			entities.getPersons().add(newPerson);
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} {} is correctly modified in the Person list",newPerson.getFirstName(),newPerson.getLastName());
 		} catch (IOException e) {
-			logger.error("A problem occurred while modify a person");
+			logger.error("A problem occurred while modify a person",e);
 			throw new RuntimeException(e);
 		}
 
@@ -64,6 +66,7 @@ public class PersonDAO {
 			entities.getPersons().removeIf(p -> p.getFirstName().equals(firstName)
 					&& p.getLastName().equals(lastName));
 			entitiesLoader.write(File.FILENAME, entities);
+			logger.info("{} {} is correctly deleted in the Person list",firstName,lastName);
 		} catch (IOException e) {
 			logger.error("A problem occurred while deleting a person");
 			throw new RuntimeException(e);

@@ -37,7 +37,6 @@ public class FirestationService {
 
 	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 
-		logger.info("Addresses based on station number {}", stationNumber);
 		Set<String> addressOfFireStations = fireStationDAO.getAll().stream()
 				.filter(firesStation -> firesStation.getStation() == stationNumber).map(FiresStation::getAddress)
 				.collect(Collectors.toSet());
@@ -46,14 +45,12 @@ public class FirestationService {
 				.filter(person -> addressOfFireStations.contains(person.getAddress()))
 
 				.collect(Collectors.toList());
-		logger.info("search for people living at this address : {}", addressOfFireStations);
+		logger.info("people found for this station {}", buildResult(allPersons, medicalRecordDAO.getAll()).toString());
 		return buildResult(allPersons, medicalRecordDAO.getAll());
 	}
 
 	private PersonsInFireStation buildResult(List<Person> allPersons, List<MedicalRecord> allMedicalRecords) {
 		PersonsInFireStation personsInFireStation = new PersonsInFireStation();
-		
-		
 
 		List<PersonInFireStation> persons = new ArrayList<>();
 		List<MedicalRecord> medicalRecords = new ArrayList<>();
@@ -63,7 +60,6 @@ public class FirestationService {
 							&& onePerson.getLastName().equals(medicalRecord.getLastName()))
 					.findFirst().orElseThrow();
 			medicalRecords.add(medicalRecordForPerson);
-			
 
 			PersonInFireStation personInFireStation = new PersonInFireStation();
 			personInFireStation.setFirstName(onePerson.getFirstName());
@@ -79,22 +75,22 @@ public class FirestationService {
 		personsInFireStation.setNbChildren(countChildren(medicalRecords));
 
 		personsInFireStation.setPersons(persons);
-		logger.info("people found for this station number : {}",(personsInFireStation.getNbAdults()+personsInFireStation.getNbChildren()));
+
 		return personsInFireStation;
 	}
 
 	private int countChildren(List<MedicalRecord> medicalRecords) {
-		
+
 		int nbChildren = (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
 				.filter(age -> age < 18).count();
-		logger.info("Number of children int this station : {}", nbChildren);
+
 		return nbChildren;
 	}
 
 	private int countAdults(List<MedicalRecord> medicalRecords) {
 		int nbAdult = (int) medicalRecords.stream().map(MedicalRecord::getBirthdate).map(this::computeAge)
 				.filter(age -> age >= 18).count();
-		logger.info("Number of adult in this station : {}", nbAdult);
+
 		return nbAdult;
 	}
 

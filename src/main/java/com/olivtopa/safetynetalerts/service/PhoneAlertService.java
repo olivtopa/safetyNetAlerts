@@ -21,21 +21,19 @@ public class PhoneAlertService {
 
 	@Autowired
 	private PersonDAO personDAO;
-	
+
 	private static Logger logger = LoggerFactory.getLogger(PhoneAlertService.class);
 
 	public List<String> findPhoneNumberByFireStationNumber(int fireStationNumber) {
-		
-		logger.info("searches for address for firestation number {} ", fireStationNumber);
 
 		List<String> fireStationAddresses = fireStationDAO.getAll().stream()
 				.filter(s -> s.getStation() == (fireStationNumber)).map(FiresStation::getAddress)
 				.collect(Collectors.toList());
-		
-logger.info("searches for phone numbers by addresses");
+
 		List<String> phoneNumberByAddress = personDAO.getAll().stream()
 				.filter(person -> fireStationAddresses.contains(person.getAddress())).map(Person::getPhone)
 				.collect(Collectors.toList());
+		logger.info("Phone numbers for this fire station : {}", List.of(phoneNumberByAddress));
 		return phoneNumberByAddress;
 
 	}

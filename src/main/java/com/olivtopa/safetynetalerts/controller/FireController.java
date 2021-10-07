@@ -17,13 +17,13 @@ public class FireController {
 
 	@Autowired
 	FireService fireService;
-	
+
 	private static Logger logger = LoggerFactory.getLogger(FireController.class);
 
 	@RequestMapping(value = "/fire", method = RequestMethod.GET)
 	public List<Fire> getInhabitantAndFireStationByAddress(String address) {
-		
-		logger.info("GET Request for persons and firestation by address");
+
+		logger.info("GET Request for persons and firestation for {}", address);
 
 		return fireService.inhabitantByAddress(address);
 

@@ -23,4 +23,9 @@ public class FloodAddress {
 		this.floodPerson = floodPerson;
 	}
 
+	@Override
+	public String toString() {
+		return "FloodAddress [address=" + address + ", floodPerson=" + floodPerson + "]";
+	}
+
 }

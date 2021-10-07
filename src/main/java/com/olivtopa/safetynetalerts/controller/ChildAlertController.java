@@ -22,7 +22,7 @@ public class ChildAlertController {
 
 	@RequestMapping(value = "/childAlert", method = RequestMethod.GET)
 	public List<ChildrenList>finalChildrenList(String address){
-		logger.info("GET request for childAlert Endpoint");
+		logger.info("GET childAlert request for {}", address);
 		return childAlertService.childrenList(address);
 	}
 	

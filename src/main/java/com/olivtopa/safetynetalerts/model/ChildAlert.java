@@ -5,6 +5,12 @@ import java.util.List;
 public class ChildAlert {
 
 	private String firstName;
+	@Override
+	public String toString() {
+		return "ChildAlert [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", foyer="
+				+ foyer + ", age=" + age + "]";
+	}
+
 	private String lastName;
 	private String address;
 	private List<String> foyer;

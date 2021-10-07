@@ -32,4 +32,10 @@ public class PersonsInFireStation {
 		this.nbAdults = nbAdults;
 	}
 
+	@Override
+	public String toString() {
+		return "PersonsInFireStation [nbAdults=" + nbAdults + ", nbChildren=" + nbChildren + ", persons=" + persons
+				+ "]";
+	}
+
 }

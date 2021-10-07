@@ -68,4 +68,10 @@ public class PersonInfo {
 		this.allergies = allergies;
 	}
 
+	@Override
+	public String toString() {
+		return "PersonInfo [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", age=" + age
+				+ ", email=" + email + ", medications=" + medications + ", allergies=" + allergies + "]";
+	}
+
 }

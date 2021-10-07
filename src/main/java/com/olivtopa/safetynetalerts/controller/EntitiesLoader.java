@@ -17,7 +17,6 @@ import com.olivtopa.safetynetalerts.model.Entities;
 public class EntitiesLoader {
 
 	ObjectMapper objectMapper = new ObjectMapper();
-	private static Logger logger = LoggerFactory.getLogger(EntitiesLoader.class);
 
 	public EntitiesLoader() {
 		objectMapper.registerModule(new JavaTimeModule());
@@ -25,15 +24,11 @@ public class EntitiesLoader {
 
 	public Entities load(String filename) throws IOException {
 
-		logger.info("chargement de {} ", filename);
-
 		return objectMapper.readValue(EntitiesLoader.class.getClassLoader().getResource(filename), Entities.class);
 
 	}
 
 	public void write(String filename, Entities entities) {
-		
-		logger.info("Mise a jour de {} " , filename);
 
 		try {
 

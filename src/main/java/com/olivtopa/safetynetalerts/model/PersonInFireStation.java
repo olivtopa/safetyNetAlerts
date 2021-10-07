@@ -49,6 +49,12 @@ public class PersonInFireStation {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+	@Override
+	public String toString() {
+		return "PersonInFireStation [firstName=" + firstName + ", lastName=" + lastName + ", birthDate=" + birthDate
+				+ ", address=" + address + ", phone=" + phone + "]";
+	}
 }	
 
 

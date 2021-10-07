@@ -86,8 +86,8 @@ public class ChildAlertService {
 				.stream().filter(a -> a.getAge() <= 18).map(person -> buildChildrenList(person,
 						findMedicalRecord(person.getFirstName(), person.getLastName()), address))
 				.collect(Collectors.toList());
-		logger.info("searches for children living in {} ", address);
-		logger.info("searches for people living in: {}", address);
+
+		logger.info("Children list living at this address ; {} ", children.toString());
 		return children;
 
 	}

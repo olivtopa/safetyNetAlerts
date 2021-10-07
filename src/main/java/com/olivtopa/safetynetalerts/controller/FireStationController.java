@@ -34,7 +34,7 @@ public class FireStationController {
 	@RequestMapping(value = "/firestation", method = RequestMethod.GET)
 	public PersonsInFireStation findPersonsInFireStationScope(long stationNumber) {
 		
-		logger.info("GET request for person by firestation");
+		logger.info("GET request for persons for firestation {}", stationNumber);
 		return firestationService.findPersonsInFireStationScope(stationNumber);
 	}
 
