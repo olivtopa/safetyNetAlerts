@@ -60,7 +60,7 @@ public class PersonInfoServiceTest {
 		List<PersonInfo> personFound = personInfoService.personDetails("Oliv", "Topa");
 
 		// Then
-		Assertions.assertThat(personFound.contains(person1));
+		Assertions.assertThat(personFound.get(0).getAddress()).isEqualTo("address1");
 	}
 
 	@Test

@@ -75,7 +75,7 @@ public class FireServiceTest {
 		List<Fire> result = fireService.inhabitantByAddress("address1");
 
 		// THEN
-		Assertions.assertThat(result.contains(person1));
+		Assertions.assertThat(result.get(0).getFirstName()).isEqualTo("Oliv");
 
 	}
 

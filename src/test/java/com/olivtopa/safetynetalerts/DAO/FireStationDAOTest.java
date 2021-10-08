@@ -18,7 +18,6 @@ import com.olivtopa.safetynetalerts.dao.FireStationDAO;
 
 import com.olivtopa.safetynetalerts.model.Entities;
 import com.olivtopa.safetynetalerts.model.FiresStation;
-import com.olivtopa.safetynetalerts.model.Person;
 
 @ExtendWith(MockitoExtension.class)
 public class FireStationDAOTest {
@@ -71,11 +70,11 @@ public class FireStationDAOTest {
 		Assertions.assertThat(entities.getFirestations()).first().extracting(FiresStation::getStation)
 				.isEqualTo(fireStationUpdated.getStation());
 	}
-	
+
 	@Test
 	public void delete() throws IOException {
-		
-		//GIVEN
+
+		// GIVEN
 		Entities entities = new Entities();
 		FiresStation fireStation = new FiresStation();
 		fireStation.setAddress("Address1");
@@ -84,15 +83,15 @@ public class FireStationDAOTest {
 		firestations.add(fireStation);
 		entities.setFirestations(firestations);
 		Mockito.when(entitiesLoader.load(ArgumentMatchers.anyString())).thenReturn(entities);
-		
-		//WHEN
+
+		// WHEN
 		FiresStation fireStationDeleted = new FiresStation();
 		fireStationDeleted.setAddress(fireStation.getAddress());
 		fireStationDeleted.setStation(fireStation.getStation());
-		
+
 		fireStationDAO.delete("Address1", 8);
-		
-		//THEN
+
+		// THEN
 		Assertions.assertThat(entities.getFirestations()).isEmpty();
 	}
 }
